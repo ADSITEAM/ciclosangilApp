@@ -5,6 +5,8 @@
  */
 package Views;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author FamiliaArias
@@ -16,6 +18,7 @@ public class formMain extends javax.swing.JFrame {
      */
     public formMain() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -44,22 +47,47 @@ public class formMain extends javax.swing.JFrame {
 
         btnIscripCarreras.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
         btnIscripCarreras.setText("Inscripciones a Carreras");
+        btnIscripCarreras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIscripCarrerasActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnIscripCarreras, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 240, 30));
 
         btnEliminar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
         btnEliminar.setText("Retiros");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 240, 30));
 
         btnListar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
         btnListar.setText("Listar Deportistas");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 240, 30));
 
         btnActualizar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
         btnActualizar.setText("Actializar Informacion");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 240, 30));
 
         btnInsertar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
         btnInsertar.setText("Nuevo Deportista");
+        btnInsertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertarActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 240, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logox300px.png"))); // NOI18N
@@ -73,6 +101,28 @@ public class formMain extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIscripCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIscripCarrerasActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnIscripCarrerasActionPerformed
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
+        formInsert form = new formInsert();
+        showForm(form);
+        this.dispose();
+    }//GEN-LAST:event_btnInsertarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,6 +157,10 @@ public class formMain extends javax.swing.JFrame {
                 new formMain().setVisible(true);
             }
         });
+    }
+    void showForm(JFrame form){
+        form.setVisible(true);
+        form.setLocationRelativeTo(null);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
