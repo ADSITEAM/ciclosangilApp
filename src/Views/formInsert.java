@@ -259,6 +259,11 @@ public class formInsert extends javax.swing.JFrame {
         jPanel1.add(txtNombreMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 208, -1));
 
         btnSubmit.setText("Inscribir");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 208, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 500));
@@ -375,6 +380,10 @@ public class formInsert extends javax.swing.JFrame {
         showPlaceholder(txtModalidad, "Modalidad");
     }//GEN-LAST:event_txtModalidadFocusLost
 
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        save();
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -428,7 +437,7 @@ public class formInsert extends javax.swing.JFrame {
         String modality = txtModalidad.getText();
         Object [] data = {document,type,firstName,lastName,dateBorn,placeBorn,school,journey,RH,eps,direcion,mail,phone,motherName,fatherName,modality};
         controllerCiclistas ctrl = new controllerCiclistas();
-        
+        ctrl.save(data);
     }
     String getDate(){
         SimpleDateFormat Fecha = new SimpleDateFormat("dd-MMM-yyyy");

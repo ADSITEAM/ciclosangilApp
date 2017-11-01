@@ -5,7 +5,9 @@
  */
 package Views;
 
+import Controllers.controllerCiclistas;
 import java.awt.Color;
+import java.sql.ResultSet;
 import javax.swing.RowFilter;
 import javax.swing.table.*;
 
@@ -27,11 +29,7 @@ public class formDelete extends javax.swing.JFrame {
         showPlaceholder();
         txtSearch1.requestFocusInWindow();
         createColumns();
-        fillTable("Nicolas", "Arias", "1100974502", "Juvenil");
-        fillTable("Juan Diego", "Cardenas", "12321523", "Juvenil");
-        fillTable("Brayan", "Uribe", "543543543", "Infantil");
-        fillTable("Sebastian", "Galvis", "7489374837", "PreJuvenil");
-        fillTable("Steven", "Bayona", "99031612183", "PreJuvenil");
+        fillTable();
     }
 
     /**
@@ -180,20 +178,31 @@ public class formDelete extends javax.swing.JFrame {
 
     void createColumns() {
         tableModel = (DefaultTableModel) tabla.getModel();
+        tableModel.addColumn("ID");
         tableModel.addColumn("Nombre");
         tableModel.addColumn("Apellido");
         tableModel.addColumn("N° Documento");
         tableModel.addColumn("Categoría");
     }
-    void filter(String query){
+
+    void filter(String query) {
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tableModel);
         tabla.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(query));
     }
 
-    void fillTable(String nombre, String apellido, String doc, String categoria) {
-        String[] row = {nombre, apellido, doc, categoria};
-        tableModel.addRow(row);
+    void fillTable() {
+        controllerCiclistas ctrl = new controllerCiclistas();
+        try {
+            ResultSet rs = ctrl.selectDelete()[0];
+            while (rs.next()) {
+                String[] row = {rs.getString("id")};
+                tableModel.addRow(row);
+            }
+            
+
+        } catch (Exception e) {
+        }
     }
 
     void showPlaceholder() {

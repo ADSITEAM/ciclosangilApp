@@ -19,7 +19,7 @@ public class Conexion {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conexBD = DriverManager.getConnection("jdbc:mysql://localhost/CicloSanGilAPP", "root", "");
+            conexBD = DriverManager.getConnection("jdbc:mysql://localhost/ciclosangil", "root", "");
 
         } catch (Exception e) {
             System.out.println("Error.conexion" + e.getMessage());
