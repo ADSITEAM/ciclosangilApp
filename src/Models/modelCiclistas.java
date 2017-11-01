@@ -31,10 +31,10 @@ public class modelCiclistas {
             System.out.println(e.getMessage());
         }
     }
-    public ResultSet show(){
+    public ResultSet selectDelete(){
         Conexion obj = new Conexion();
         Connection cnx = obj.getConexBD();
-        String query = "select id, n_documento, nombres, apellidos, fecha_nacimientos from ciclistas";
+        String query = "select id, n_documento, nombres, apellidos from ciclistas";
         try {
             Statement st = cnx.createStatement();
             return st.executeQuery(query);
@@ -43,7 +43,19 @@ public class modelCiclistas {
             System.out.println(e.getMessage());
             return null;
         }
-        
+    }
+    public ResultSet selectDates(){
+        Conexion obj = new Conexion();
+        Connection cnx = obj.getConexBD();
+        String query = "select fecha_nacimiento from ciclistas";
+        try {
+            Statement st = cnx.createStatement();
+            return st.executeQuery(query);
+        } catch (Exception e) {
+            System.out.println("Error en select from Categorys:");
+            System.out.println(e.getMessage());
+            return null;
+        }
         
     }
 }

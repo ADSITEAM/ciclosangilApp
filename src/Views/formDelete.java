@@ -5,6 +5,7 @@
  */
 package Views;
 
+import Controllers.controllerCategorias;
 import Controllers.controllerCiclistas;
 import java.awt.Color;
 import java.sql.ResultSet;
@@ -106,7 +107,12 @@ public class formDelete extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 530, 270));
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 520));
@@ -140,6 +146,10 @@ public class formDelete extends javax.swing.JFrame {
         String text = txtSearch.getText();
         filter(text);
     }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,14 +203,18 @@ public class formDelete extends javax.swing.JFrame {
 
     void fillTable() {
         controllerCiclistas ctrl = new controllerCiclistas();
+        controllerCategorias ctrlCat = new controllerCategorias();
         try {
-            ResultSet rs = ctrl.selectDelete()[0];
+            ResultSet rs = ctrl.selectDelete();
             while (rs.next()) {
-                String[] row = {rs.getString("id")};
+                String id = rs.getString("id");
+                String nombres = rs.getString("nombres");
+                String apellidos = rs.getString("pellidos");
+                String doc = rs.getString("n_documento");
+                String cat = ctrlCat.getCategoria(rs.getString("fecha_nacimiento"));
+                String[] row = {id,nombres,apellidos,doc,cat};
                 tableModel.addRow(row);
             }
-            
-
         } catch (Exception e) {
         }
     }
