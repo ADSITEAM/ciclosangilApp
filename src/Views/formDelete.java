@@ -188,7 +188,6 @@ public class formDelete extends javax.swing.JFrame {
 
     void createColumns() {
         tableModel = (DefaultTableModel) tabla.getModel();
-        tableModel.addColumn("ID");
         tableModel.addColumn("Nombre");
         tableModel.addColumn("Apellido");
         tableModel.addColumn("N° Documento");
@@ -207,15 +206,15 @@ public class formDelete extends javax.swing.JFrame {
         try {
             ResultSet rs = ctrl.selectDelete();
             while (rs.next()) {
-                String id = rs.getString("id");
                 String nombres = rs.getString("nombres");
-                String apellidos = rs.getString("pellidos");
+                String apellidos = rs.getString("apellidos");
                 String doc = rs.getString("n_documento");
                 String cat = ctrlCat.getCategoria(rs.getString("fecha_nacimiento"));
-                String[] row = {id,nombres,apellidos,doc,cat};
+                String[] row = {nombres,apellidos,doc,cat};
                 tableModel.addRow(row);
             }
         } catch (Exception e) {
+            System.out.println("Error recorrer array vista: "+ e.getMessage());
         }
     }
 

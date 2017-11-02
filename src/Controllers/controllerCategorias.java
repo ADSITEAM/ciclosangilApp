@@ -17,27 +17,6 @@ import java.util.Date;
  */
 public class controllerCategorias {
 
-    public String[] getCategorias() {
-        modelCiclistas model = new modelCiclistas();
-        ResultSet rs = model.selectDates();
-        String[] categorias = {};
-        int i = 0;
-        try {
-            while (rs.next()) {
-                i++;
-            }
-            categorias = new String[i];
-            i = 0;
-            while (rs.next()) {
-                categorias[i] = getCategoria(rs.getString("fecha_nacimiento"));
-                i++;
-            }
-        } catch (Exception e) {
-            System.out.println("error recorriendo Array " + e.getMessage());
-        }
-        return categorias;
-    }
-
     public String getCategoria(String fechaNacimiento) {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         String cat = "";

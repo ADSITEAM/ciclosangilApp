@@ -24,9 +24,9 @@ public class formInsert extends javax.swing.JFrame {
         initComponents();
         txtFocussable.requestFocusInWindow();
         showPlaceholder(txtNombres, "Nombres");
-        showPlaceholder(txtApellidos, "Apellidos");        
+        showPlaceholder(txtApellidos, "Apellidos");
         showPlaceholder(txtNumeroDoc, "N° de Documento");
-        showPlaceholder(txtRH, "RH (O+)");        
+        showPlaceholder(txtRH, "RH (O+)");
         showPlaceholder(txtEps, "EPS");
         showPlaceholder(txtColegio, "Institución Educativa");
         showPlaceholder(txtDireccion, "Dirección de recidencia");
@@ -69,6 +69,7 @@ public class formInsert extends javax.swing.JFrame {
         txtModalidad = new javax.swing.JTextField();
         txtNombrePadre = new javax.swing.JTextField();
         txtNombreMadre = new javax.swing.JTextField();
+        btnVolver = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
         txtFocussable = new javax.swing.JTextField();
 
@@ -258,6 +259,14 @@ public class formInsert extends javax.swing.JFrame {
         });
         jPanel1.add(txtNombreMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 208, -1));
 
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 208, -1));
+
         btnSubmit.setText("Inscribir");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -369,7 +378,7 @@ public class formInsert extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombrePadreFocusGained
 
     private void txtNombrePadreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombrePadreFocusLost
-       showPlaceholder(txtNombrePadre, "Nombre del Padre");
+        showPlaceholder(txtNombrePadre, "Nombre del Padre");
     }//GEN-LAST:event_txtNombrePadreFocusLost
 
     private void txtModalidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtModalidadFocusGained
@@ -382,7 +391,16 @@ public class formInsert extends javax.swing.JFrame {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         save();
+        limpiar();
     }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+        formMain form = new formMain();
+        form.setVisible(true);
+        form.setResizable(false);
+        form.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -418,7 +436,37 @@ public class formInsert extends javax.swing.JFrame {
             }
         });
     }
-    void save(){
+    void limpiar(){
+        txtApellidos.setText("");
+        txtNombres.setText("");
+        txtColegio.setText("");
+        txtDireccion.setText("");
+        txtEmail.setText("");
+        txtEps.setText("");
+        txtLugarNac.setText("");
+        txtModalidad.setText("");
+        txtNombrePadre.setText("");
+        txtNombreMadre.setText("");
+        txtNumeroDoc.setText("");
+        txtRH.setText("");
+        txtTelefono.setText("");
+        dateChoser.setDateFormatString("");
+        txtFocussable.requestFocusInWindow();
+        showPlaceholder(txtNombres, "Nombres");
+        showPlaceholder(txtApellidos, "Apellidos");
+        showPlaceholder(txtNumeroDoc, "N° de Documento");
+        showPlaceholder(txtRH, "RH (O+)");
+        showPlaceholder(txtEps, "EPS");
+        showPlaceholder(txtColegio, "Institución Educativa");
+        showPlaceholder(txtDireccion, "Dirección de recidencia");
+        showPlaceholder(txtEmail, "Correo Electrónico");
+        showPlaceholder(txtModalidad, "Modalidad");
+        showPlaceholder(txtLugarNac, "Lugar de Nacimiento");
+        showPlaceholder(txtNombreMadre, "Nombre de la Madre");
+        showPlaceholder(txtNombrePadre, "Nombre del Padre");
+        showPlaceholder(txtTelefono, "Teléfono");
+    }
+    void save() {
         String firstName = txtNombres.getText();
         String lastName = txtApellidos.getText();
         String document = txtNumeroDoc.getText();
@@ -435,14 +483,16 @@ public class formInsert extends javax.swing.JFrame {
         String motherName = txtNombreMadre.getText();
         String fatherName = txtNombrePadre.getText();
         String modality = txtModalidad.getText();
-        Object [] data = {document,type,firstName,lastName,dateBorn,placeBorn,school,journey,RH,eps,direcion,mail,phone,motherName,fatherName,modality};
+        Object[] data = {document, type, firstName, lastName, dateBorn, placeBorn, school, journey, RH, eps, direcion, mail, phone, motherName, fatherName, modality};
         controllerCiclistas ctrl = new controllerCiclistas();
         ctrl.save(data);
     }
-    String getDate(){
-        SimpleDateFormat Fecha = new SimpleDateFormat("dd-MMM-yyyy");
+
+    String getDate() {
+        SimpleDateFormat Fecha = new SimpleDateFormat("dd-MM-yyyy");
         return Fecha.format(dateChoser.getDate());
     }
+
     void showPlaceholder(JTextField element, String placeholderText) {
         if (element.getText().equals("")) {
             element.setForeground(Color.decode("#818181"));
@@ -450,7 +500,7 @@ public class formInsert extends javax.swing.JFrame {
         }
     }
 
-    void unshowPlaceholder(JTextField element , String placeholderText) {
+    void unshowPlaceholder(JTextField element, String placeholderText) {
         String text = element.getText();
         if (text.equals(placeholderText)) {
             element.setText("");
@@ -461,6 +511,7 @@ public class formInsert extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Journey;
     private javax.swing.JButton btnSubmit;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cbxTipo;
     private com.toedter.calendar.JDateChooser dateChoser;
     private javax.swing.JLabel jLabel2;

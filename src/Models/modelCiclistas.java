@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,16 +26,17 @@ public class modelCiclistas {
                 statement.setString(i+1, data[i].toString());
             }
             int count = statement.executeUpdate();
-            System.out.println(""+count);
+            JOptionPane.showMessageDialog(null,"Deportista "+data[2].toString()+" "+data[3].toString()+" inscrito correctamente.");
         } catch (Exception e) {
             System.out.println("Error en save ciclistas:");
             System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al inscribir el deportista.");
         }
     }
     public ResultSet selectDelete(){
         Conexion obj = new Conexion();
         Connection cnx = obj.getConexBD();
-        String query = "select id, n_documento, nombres, apellidos from ciclistas";
+        String query = "select id, n_documento, nombres, apellidos,fecha_nacimiento from ciclistas";
         try {
             Statement st = cnx.createStatement();
             return st.executeQuery(query);
@@ -43,19 +45,5 @@ public class modelCiclistas {
             System.out.println(e.getMessage());
             return null;
         }
-    }
-    public ResultSet selectDates(){
-        Conexion obj = new Conexion();
-        Connection cnx = obj.getConexBD();
-        String query = "select fecha_nacimiento from ciclistas";
-        try {
-            Statement st = cnx.createStatement();
-            return st.executeQuery(query);
-        } catch (Exception e) {
-            System.out.println("Error en select from Categorys:");
-            System.out.println(e.getMessage());
-            return null;
-        }
-        
     }
 }
