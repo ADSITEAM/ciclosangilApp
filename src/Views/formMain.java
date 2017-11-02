@@ -121,13 +121,12 @@ public class formMain extends javax.swing.JFrame {
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
         formInsert form = new formInsert();
-      //  showForm(form);
-      form.show();
+        showForm(form);
         this.dispose();
     }//GEN-LAST:event_btnInsertarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -170,9 +169,9 @@ public class formMain extends javax.swing.JFrame {
             }
         });
     }
-    void showForm(JFrame form){
 
-        form.setResizable(false);
+    void showForm(JFrame form) {
+        form.setVisible(true);
         form.setLocationRelativeTo(null);
     }
 
