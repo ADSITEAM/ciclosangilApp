@@ -88,7 +88,7 @@ public class formInsert extends javax.swing.JFrame {
         lbTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitle.setText("Inscripción Deportista");
-        jPanel1.add(lbTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 580, -1));
+        jPanel1.add(lbTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 580, -1));
 
         txtNombres.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtNombres.addFocusListener(new java.awt.event.FocusAdapter() {
