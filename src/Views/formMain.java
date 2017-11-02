@@ -41,6 +41,7 @@ public class formMain extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -113,6 +114,8 @@ public class formMain extends javax.swing.JFrame {
 
     private void btnIscripCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIscripCarrerasActionPerformed
         this.dispose();
+        formInscripcion form = new formInscripcion();
+        showForm(form);
     }//GEN-LAST:event_btnIscripCarrerasActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
