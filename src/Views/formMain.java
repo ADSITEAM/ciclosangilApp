@@ -121,7 +121,8 @@ public class formMain extends javax.swing.JFrame {
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
         formInsert form = new formInsert();
-        showForm(form);
+      //  showForm(form);
+      form.show();
         this.dispose();
     }//GEN-LAST:event_btnInsertarActionPerformed
 
@@ -170,7 +171,7 @@ public class formMain extends javax.swing.JFrame {
         });
     }
     void showForm(JFrame form){
-        form.setVisible(true);
+
         form.setResizable(false);
         form.setLocationRelativeTo(null);
     }

@@ -22,6 +22,8 @@ public class formInsert extends javax.swing.JFrame {
      */
     public formInsert() {
         initComponents();
+  
+        setLocationRelativeTo(null);
         txtFocussable.requestFocusInWindow();
         showPlaceholder(txtNombres, "Nombres");
         showPlaceholder(txtApellidos, "Apellidos");
@@ -75,6 +77,7 @@ public class formInsert extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -275,7 +278,7 @@ public class formInsert extends javax.swing.JFrame {
         });
         jPanel1.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 208, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 500));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 500));
         getContentPane().add(txtFocussable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 60, -1));
 
         pack();
