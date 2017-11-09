@@ -73,6 +73,18 @@ public class formInsert extends javax.swing.JFrame {
         txtNombreMadre = new javax.swing.JTextField();
         btnVolver = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         txtFocussable = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,6 +93,7 @@ public class formInsert extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
@@ -91,7 +104,8 @@ public class formInsert extends javax.swing.JFrame {
         lbTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitle.setText("Inscripción Deportista");
-        jPanel1.add(lbTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 580, -1));
+        lbTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(lbTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 810, -1));
 
         txtNombres.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtNombres.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -102,7 +116,7 @@ public class formInsert extends javax.swing.JFrame {
                 txtNombresFocusLost(evt);
             }
         });
-        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 116, 208, -1));
+        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 208, -1));
 
         txtApellidos.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtApellidos.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -113,15 +127,16 @@ public class formInsert extends javax.swing.JFrame {
                 txtApellidosFocusLost(evt);
             }
         });
-        jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 116, 208, -1));
+        jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 208, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Tipo:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 154, -1, 22));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, -1, 22));
 
         cbxTipo.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarjeta de Identidad", "Cedula de Ciudadanía", "Cedula de Extranjería" }));
-        jPanel1.add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 150, 24));
+        cbxTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 210, 24));
 
         txtEps.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtEps.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -132,7 +147,7 @@ public class formInsert extends javax.swing.JFrame {
                 txtEpsFocusLost(evt);
             }
         });
-        jPanel1.add(txtEps, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 277, 128, -1));
+        jPanel1.add(txtEps, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 370, 110, -1));
 
         txtRH.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtRH.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -143,7 +158,7 @@ public class formInsert extends javax.swing.JFrame {
                 txtRHFocusLost(evt);
             }
         });
-        jPanel1.add(txtRH, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 277, 70, -1));
+        jPanel1.add(txtRH, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 80, -1));
 
         txtDireccion.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -154,15 +169,15 @@ public class formInsert extends javax.swing.JFrame {
                 txtDireccionFocusLost(evt);
             }
         });
-        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 208, -1));
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 208, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Jornada:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 237, -1, 22));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, 22));
 
         Journey.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         Journey.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Mañana", "Tarde", "Noche" }));
-        jPanel1.add(Journey, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 140, 24));
+        jPanel1.add(Journey, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 210, 24));
 
         txtLugarNac.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtLugarNac.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -173,7 +188,7 @@ public class formInsert extends javax.swing.JFrame {
                 txtLugarNacFocusLost(evt);
             }
         });
-        jPanel1.add(txtLugarNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 197, 208, -1));
+        jPanel1.add(txtLugarNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 208, -1));
 
         txtNumeroDoc.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtNumeroDoc.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -184,17 +199,17 @@ public class formInsert extends javax.swing.JFrame {
                 txtNumeroDocFocusLost(evt);
             }
         });
-        jPanel1.add(txtNumeroDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 155, 208, -1));
+        jPanel1.add(txtNumeroDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 208, -1));
 
         dateChoser.setBackground(new java.awt.Color(255, 255, 255));
         dateChoser.setToolTipText("Fecha de Nacimiento");
         dateChoser.setDateFormatString("dd-MM-yyyy");
         dateChoser.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jPanel1.add(dateChoser, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 196, 130, -1));
+        jPanel1.add(dateChoser, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 210, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Fecha Nac:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 196, 73, 22));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 73, 22));
 
         txtColegio.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtColegio.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -205,7 +220,7 @@ public class formInsert extends javax.swing.JFrame {
                 txtColegioFocusLost(evt);
             }
         });
-        jPanel1.add(txtColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 237, 208, -1));
+        jPanel1.add(txtColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 208, -1));
 
         txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -216,7 +231,7 @@ public class formInsert extends javax.swing.JFrame {
                 txtTelefonoFocusLost(evt);
             }
         });
-        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 208, -1));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 208, -1));
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -227,7 +242,7 @@ public class formInsert extends javax.swing.JFrame {
                 txtEmailFocusLost(evt);
             }
         });
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 208, -1));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 208, -1));
 
         txtModalidad.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtModalidad.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -238,7 +253,7 @@ public class formInsert extends javax.swing.JFrame {
                 txtModalidadFocusLost(evt);
             }
         });
-        jPanel1.add(txtModalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 208, -1));
+        jPanel1.add(txtModalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 208, -1));
 
         txtNombrePadre.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtNombrePadre.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -249,7 +264,7 @@ public class formInsert extends javax.swing.JFrame {
                 txtNombrePadreFocusLost(evt);
             }
         });
-        jPanel1.add(txtNombrePadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 208, -1));
+        jPanel1.add(txtNombrePadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 208, -1));
 
         txtNombreMadre.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtNombreMadre.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -260,25 +275,63 @@ public class formInsert extends javax.swing.JFrame {
                 txtNombreMadreFocusLost(evt);
             }
         });
-        jPanel1.add(txtNombreMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 208, -1));
+        jPanel1.add(txtNombreMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 208, -1));
 
         btnVolver.setText("Volver");
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 208, -1));
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 590, 240, -1));
 
         btnSubmit.setText("Inscribir");
+        btnSubmit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 208, -1));
+        jPanel1.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 520, 210, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 500));
+        jLabel1.setText("Nombres");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        jLabel5.setText("Documeto");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+
+        jLabel6.setText("Lugar de nacimiento");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        jLabel7.setText("Institucion");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+
+        jLabel8.setText("Tipo de sangre");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+
+        jLabel9.setText("Correo");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
+
+        jLabel10.setText("Nombre del padre");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, -1, -1));
+
+        jLabel11.setText("Nombre de la madre");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
+
+        jLabel12.setText("Apellidos");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, -1, -1));
+
+        jLabel13.setText("Direccion");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, -1, -1));
+
+        jLabel14.setText("Telefono");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, -1));
+
+        jLabel15.setText("Modalidad");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 690));
         getContentPane().add(txtFocussable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 60, -1));
 
         pack();
@@ -517,9 +570,21 @@ public class formInsert extends javax.swing.JFrame {
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cbxTipo;
     private com.toedter.calendar.JDateChooser dateChoser;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbTitle;
     private javax.swing.JTextField txtApellidos;
