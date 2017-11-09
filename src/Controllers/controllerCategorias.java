@@ -16,7 +16,6 @@ import java.util.Date;
  * @author user
  */
 public class controllerCategorias {
-
     public String getCategoria(String fechaNacimiento) {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         String cat = "";

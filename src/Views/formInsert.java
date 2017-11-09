@@ -6,6 +6,7 @@
 package Views;
 
 import Controllers.controllerCiclistas;
+import Controllers.controllerDocs;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
@@ -31,7 +32,7 @@ public class formInsert extends javax.swing.JFrame {
         showPlaceholder(txtRH, "RH (O+)");
         showPlaceholder(txtEps, "EPS");
         showPlaceholder(txtColegio, "Institución Educativa");
-        showPlaceholder(txtDireccion, "Dirección de recidencia");
+        showPlaceholder(txtDireccion, "Dirección de Residencia");
         showPlaceholder(txtEmail, "Correo Electrónico");
         showPlaceholder(txtModalidad, "Modalidad");
         showPlaceholder(txtLugarNac, "Lugar de Nacimiento");
@@ -398,11 +399,11 @@ public class formInsert extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEpsFocusLost
 
     private void txtDireccionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionFocusGained
-        unshowPlaceholder(txtDireccion, "Dirección de recidencia");
+        unshowPlaceholder(txtDireccion, "Dirección de Residencia");
     }//GEN-LAST:event_txtDireccionFocusGained
 
     private void txtDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionFocusLost
-        showPlaceholder(txtDireccion, "Dirección de recidencia");
+        showPlaceholder(txtDireccion, "Dirección de Residencia");
     }//GEN-LAST:event_txtDireccionFocusLost
 
     private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
@@ -514,7 +515,7 @@ public class formInsert extends javax.swing.JFrame {
         showPlaceholder(txtRH, "RH (O+)");
         showPlaceholder(txtEps, "EPS");
         showPlaceholder(txtColegio, "Institución Educativa");
-        showPlaceholder(txtDireccion, "Dirección de recidencia");
+        showPlaceholder(txtDireccion, "Dirección de Residencia");
         showPlaceholder(txtEmail, "Correo Electrónico");
         showPlaceholder(txtModalidad, "Modalidad");
         showPlaceholder(txtLugarNac, "Lugar de Nacimiento");
@@ -522,7 +523,7 @@ public class formInsert extends javax.swing.JFrame {
         showPlaceholder(txtNombrePadre, "Nombre del Padre");
         showPlaceholder(txtTelefono, "Teléfono");
     }
-    void save() {
+    void save(){
         String firstName = txtNombres.getText();
         String lastName = txtApellidos.getText();
         String document = txtNumeroDoc.getText();
@@ -530,18 +531,27 @@ public class formInsert extends javax.swing.JFrame {
         int journey = Journey.getSelectedIndex();
         String placeBorn = txtLugarNac.getText();
         String dateBorn = getDate();
-        String school = txtColegio.getText();
+        String school = validateText(txtColegio, "Institución Educativa");
         String RH = txtRH.getText();
         String eps = txtEps.getText();
         String direcion = txtDireccion.getText();
-        String mail = txtEmail.getText();
-        String phone = txtTelefono.getText();
-        String motherName = txtNombreMadre.getText();
-        String fatherName = txtNombrePadre.getText();
+        String mail = validateText(txtEmail, "Correo Electrónico");
+        String phone = validateText(txtTelefono, "Teléfono");
+        String motherName = validateText(txtNombreMadre, "Nombre de la Madre");
+        String fatherName = validateText(txtNombrePadre, "Nombre del Padre");
         String modality = txtModalidad.getText();
         Object[] data = {document, type, firstName, lastName, dateBorn, placeBorn, school, journey, RH, eps, direcion, mail, phone, motherName, fatherName, modality};
         controllerCiclistas ctrl = new controllerCiclistas();
+        controllerDocs docs = new controllerDocs();
         ctrl.save(data);
+        docs.generateDoc(data);
+    }
+    String validateText(JTextField txtField, String placeholderText){
+        String text;
+        if (txtField.getText().equals(placeholderText)) {
+            text = "";
+        }else text = txtField.getText();
+        return text;
     }
 
     String getDate() {
