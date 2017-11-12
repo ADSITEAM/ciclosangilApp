@@ -24,10 +24,21 @@ public class controllerCiclistas {
         model.save(data);
     }
 
-    public ResultSet selectDelete() {
+    public ResultSet fillTable() {
         modelCiclistas model = new modelCiclistas();
-        return model.selectDelete();
+        return model.fillTable();
     }
-
+    public ResultSet selectEdit(String doc){
+        modelCiclistas model = new modelCiclistas();
+        return model.selectEdit(doc);
+    }
+    public void update(Object[] data) {
+        modelCiclistas model = new modelCiclistas();
+        model.update(data);
+    }
+    public void delete(String id){
+        modelCiclistas model = new modelCiclistas();
+        model.delete(id);
+    }
     
 }

@@ -133,7 +133,7 @@ public class formMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        formDelete form = new formDelete();
+        formEdit form = new formEdit();
         showForm(form);
         this.dispose();
     }//GEN-LAST:event_btnEliminarActionPerformed

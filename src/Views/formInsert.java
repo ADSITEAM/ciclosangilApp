@@ -23,22 +23,8 @@ public class formInsert extends javax.swing.JFrame {
      */
     public formInsert() {
         initComponents();
-  
         setLocationRelativeTo(null);
-        txtFocussable.requestFocusInWindow();
-        showPlaceholder(txtNombres, "Nombres");
-        showPlaceholder(txtApellidos, "Apellidos");
-        showPlaceholder(txtNumeroDoc, "N° de Documento");
-        showPlaceholder(txtRH, "RH (O+)");
-        showPlaceholder(txtEps, "EPS");
-        showPlaceholder(txtColegio, "Institución Educativa");
-        showPlaceholder(txtDireccion, "Dirección de Residencia");
-        showPlaceholder(txtEmail, "Correo Electrónico");
-        showPlaceholder(txtModalidad, "Modalidad");
-        showPlaceholder(txtLugarNac, "Lugar de Nacimiento");
-        showPlaceholder(txtNombreMadre, "Nombre de la Madre");
-        showPlaceholder(txtNombrePadre, "Nombre del Padre");
-        showPlaceholder(txtTelefono, "Teléfono");
+        allPlaceholders();
 
     }
 
@@ -94,7 +80,7 @@ public class formInsert extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
@@ -178,6 +164,7 @@ public class formInsert extends javax.swing.JFrame {
 
         Journey.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         Journey.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Mañana", "Tarde", "Noche" }));
+        Journey.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(Journey, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 210, 24));
 
         txtLugarNac.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
@@ -278,6 +265,7 @@ public class formInsert extends javax.swing.JFrame {
         });
         jPanel1.add(txtNombreMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 208, -1));
 
+        btnVolver.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnVolver.setText("Volver");
         btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -287,6 +275,7 @@ public class formInsert extends javax.swing.JFrame {
         });
         jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 590, 240, -1));
 
+        btnSubmit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSubmit.setText("Inscribir");
         btnSubmit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -296,39 +285,51 @@ public class formInsert extends javax.swing.JFrame {
         });
         jPanel1.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 520, 210, -1));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Nombres");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Documeto");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Lugar de nacimiento");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Institucion");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Tipo de sangre");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Correo");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Nombre del padre");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, -1, -1));
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("Nombre de la madre");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Apellidos");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, -1, -1));
 
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Direccion");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, -1, -1));
 
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Telefono");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, -1));
 
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setText("Modalidad");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, -1));
 
@@ -572,6 +573,22 @@ public class formInsert extends javax.swing.JFrame {
             element.setText("");
             element.setForeground(Color.decode("#000000"));
         }
+    }
+    void allPlaceholders(){
+        txtFocussable.requestFocusInWindow();
+        showPlaceholder(txtNombres, "Nombres");
+        showPlaceholder(txtApellidos, "Apellidos");
+        showPlaceholder(txtNumeroDoc, "N° de Documento");
+        showPlaceholder(txtRH, "RH (O+)");
+        showPlaceholder(txtEps, "EPS");
+        showPlaceholder(txtColegio, "Institución Educativa");
+        showPlaceholder(txtDireccion, "Dirección de Residencia");
+        showPlaceholder(txtEmail, "Correo Electrónico");
+        showPlaceholder(txtModalidad, "Modalidad");
+        showPlaceholder(txtLugarNac, "Lugar de Nacimiento");
+        showPlaceholder(txtNombreMadre, "Nombre de la Madre");
+        showPlaceholder(txtNombrePadre, "Nombre del Padre");
+        showPlaceholder(txtTelefono, "Teléfono");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
