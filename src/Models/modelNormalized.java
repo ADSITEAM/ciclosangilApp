@@ -40,5 +40,21 @@ public class modelNormalized {
             return null;
         }
     }
-    
+    public int getID(String name, String table){
+        Conexion obj = new Conexion();
+        Connection cnx = obj.getConexBD();
+        int id = 0;
+        String query ="SELECT id from "+table+" where nombre = '"+name+"'";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                id = rs.getInt("id");
+            }
+        } catch (Exception e) {
+            System.out.println("Error cargar id eps");
+            System.out.println(e.getMessage());
+        }
+        return id;
+    }
 }
