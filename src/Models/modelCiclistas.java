@@ -88,6 +88,8 @@ public class modelCiclistas {
             PreparedStatement statement = cnx.prepareStatement(query);
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Actualización Correcta");
+            controllerDocs docs = new controllerDocs();
+            docs.generateDoc(id);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al actualizar");
             System.out.println("Error en update " + e.getMessage());

@@ -24,7 +24,6 @@ public class controllerCiclistas {
         modelCiclistas model = new modelCiclistas();
         model.save(data);
     }
-
     public ResultSet fillTable() {
         modelCiclistas model = new modelCiclistas();
         return model.fillTable();
@@ -48,5 +47,9 @@ public class controllerCiclistas {
     public ResultSet getRH(){
         modelNormalized model = new modelNormalized();
         return model.getRH();
+    }
+    public int getID(String name, String tabla){
+        modelNormalized model = new modelNormalized();
+        return model.getID(name, tabla);
     }
 }
