@@ -17,7 +17,7 @@ public class modelNormalized {
     public ResultSet getEPS(){
         Conexion obj = new Conexion();
         Connection cnx = obj.getConexBD();
-        String query = "select * from eps";
+        String query = "select * from eps order by(nombre)";
         try {
             Statement st = cnx.createStatement();
             return st.executeQuery(query);
