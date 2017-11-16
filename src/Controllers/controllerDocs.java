@@ -22,9 +22,9 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
  * @author user
  */
 public class controllerDocs {
-
+ modelCiclistas model = new modelCiclistas();
     public void generateDoc(String id) {
-        modelCiclistas model = new modelCiclistas();
+       
         ResultSet data = model.selectDoc(id);
         Date today = new Date();
         today.setHours(0);

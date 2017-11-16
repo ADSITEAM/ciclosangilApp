@@ -12,24 +12,12 @@ import Models.modelLogin;
  * @author Aprendiz
  */
 public class controllerLogin {
-    String Usuario, Clave;
-    modelLogin objBD_Login = new modelLogin();
+    modelLogin model = new modelLogin();
     
-    
-    public void setUsuario(String Usuario) {
-        this.Usuario = Usuario;
+    public int validarLogin(String user, String pass){
+        return model.validarLogin(user, pass);
     }
-
-    public void setClave(String Clave) {
-        this.Clave = Clave;
+    public int getRol(String user){
+        return model.getRol(user);
     }
-    public void validarLogin(){
-        objBD_Login.validarLogin(Usuario, Clave);
-    }
-    
-    public int ContarUsu(){
-        int ContarUsu = objBD_Login.getContarUsu();
-        return ContarUsu;
-    }
-    //
 }

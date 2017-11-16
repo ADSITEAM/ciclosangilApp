@@ -17,39 +17,39 @@ import java.util.Date;
  * @author Aprendiz
  */
 public class controllerCiclistas {
-    
-    
+
+    modelCiclistas model = new modelCiclistas();
+    modelNormalized modelNormalized = new modelNormalized();
 
     public void save(Object[] data) {
-        modelCiclistas model = new modelCiclistas();
         model.save(data);
     }
+
     public ResultSet fillTable() {
-        modelCiclistas model = new modelCiclistas();
         return model.fillTable();
     }
-    public ResultSet selectEdit(String doc){
-        modelCiclistas model = new modelCiclistas();
+
+    public ResultSet selectEdit(String doc) {
         return model.selectEdit(doc);
     }
+
     public void update(Object[] data) {
-        modelCiclistas model = new modelCiclistas();
         model.update(data);
     }
-    public void delete(String id){
-        modelCiclistas model = new modelCiclistas();
+
+    public void delete(String id) {
         model.delete(id);
     }
-    public ResultSet getEps(){
-        modelNormalized model = new modelNormalized();
-        return model.getEPS();
+
+    public ResultSet getEps() {
+        return modelNormalized.getEPS();
     }
-    public ResultSet getRH(){
-        modelNormalized model = new modelNormalized();
-        return model.getRH();
+
+    public ResultSet getRH() {
+        return modelNormalized.getRH();
     }
-    public int getID(String name, String tabla){
-        modelNormalized model = new modelNormalized();
-        return model.getID(name, tabla);
+
+    public int getID(String name, String tabla) {
+        return modelNormalized.getID(name, tabla);
     }
 }

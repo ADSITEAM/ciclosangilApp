@@ -18,11 +18,12 @@ public class modelLogin {
     Conexion obj = new Conexion();
     Connection cnx = obj.getConexBD();
 
-    int ContarUsu;
+    
 
-    public void validarLogin(String usu, String clave) {
+    public int validarLogin(String user, String pass) {
+        int ContarUsu = 0;
         try {
-            String sql = "select Count(usuario) from login where usuario = '" + usu + "' and clave = '" + clave + "'";
+            String sql = "select Count(username) from usuarios where username = '" + user + "' and password = '" + pass + "'";
             Statement st = cnx.createStatement();
             ResultSet rsUsu = st.executeQuery(sql);
 
@@ -33,11 +34,25 @@ public class modelLogin {
         } catch (Exception e) {
             System.out.println("Login BD -- validar " + e.getMessage());
         }
-
-    }
-
-    public int getContarUsu() {
         return ContarUsu;
+    }
+    
+    public int getRol(String user){
+        int rol = 0;
+        try {
+            String sql = "select rol from usuarios where username = '" + user + "'";
+            Statement st = cnx.createStatement();
+            ResultSet rsUsu = st.executeQuery(sql);
+
+            while (rsUsu.next()) {
+                rol = rsUsu.getInt(1);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Login BD -- get rol " + e.getMessage());
+        }
+        
+        return rol;
     }
 
 }
