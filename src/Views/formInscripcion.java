@@ -5,7 +5,15 @@
  */
 package Views;
 
+import Controllers.controllerCategorias;
+import Controllers.controllerCiclistas;
 import java.awt.Color;
+import java.sql.ResultSet;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -16,10 +24,12 @@ public class formInscripcion extends javax.swing.JFrame {
     /**
      * Creates new form formInscripcion
      */
-    String placeholderText = "Ingrese el nombre...";
+    DefaultTableModel tableModel;
     public formInscripcion() {
         initComponents();
-        showPlaceholder();
+        createColumns(tablaRacers);
+        createColumns(tabla);
+        fillTable();
         focussable.requestFocusInWindow();
     }
 
@@ -41,7 +51,7 @@ public class formInscripcion extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         btnAdd = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tablaAll = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -54,6 +64,7 @@ public class formInscripcion extends javax.swing.JFrame {
         txtTelDelegado = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         focussable = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,7 +81,7 @@ public class formInscripcion extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(tablaRacers);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, 440, 270));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 440, 270));
 
         btnDelete.setText("<<");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +89,7 @@ public class formInscripcion extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, -1, -1));
+        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, -1, -1));
 
         txtSearch.setToolTipText("Ingrese Tarjeta de Identidad");
         txtSearch.setBorder(null);
@@ -95,70 +106,80 @@ public class formInscripcion extends javax.swing.JFrame {
                 txtSearchKeyReleased(evt);
             }
         });
-        jPanel1.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 410, 40));
+        jPanel1.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 410, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(0, 102, 153));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 440, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 440, 10));
 
         btnAdd.setText(">>");
+        btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddMouseClicked(evt);
+            }
+        });
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, -1));
+        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, -1, -1));
 
-        jScrollPane3.setViewportView(tablaAll);
+        jScrollPane3.setViewportView(tabla);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 450, 270));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 450, 270));
 
-        jLabel2.setText("Telefono");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 80, -1, 20));
+        jLabel2.setText("Teléfono");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 110, -1, 20));
 
         jLabel3.setText("Carrera");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, -1, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, -1, 30));
 
-        jLabel4.setText("Director Tecnico");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, -1, 30));
+        jLabel4.setText("Director Técnico");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, -1, 30));
 
         jLabel5.setText("Delegado");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, -1, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, -1, 20));
 
-        jLabel6.setText("Telefono");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 120, -1, 20));
+        jLabel6.setText("Teléfono");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 160, -1, 20));
 
         txtCarrera.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 30, 340, 30));
+        jPanel1.add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, 340, 30));
 
         txtDT.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, 180, -1));
+        jPanel1.add(txtDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, 180, -1));
 
         txtDelegado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtDelegado, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, 180, -1));
+        jPanel1.add(txtDelegado, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, 180, -1));
 
         txtTelDT.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtTelDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 80, 100, -1));
+        jPanel1.add(txtTelDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 110, 100, -1));
 
         txtTelDelegado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtTelDelegado, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 120, 100, -1));
+        jPanel1.add(txtTelDelegado, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 160, 100, -1));
 
         jButton3.setText("Generar Inscripción");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, -1, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 500, -1, -1));
 
-        btnVolver.setText("Volver");
+        btnVolver.setText("Menú Principal ");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, 120, -1));
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 500, 120, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 500));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 25)); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logox100px.png"))); // NOI18N
+        jLabel7.setText("  Sección de Inscripciones");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 450, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 550));
 
         focussable.setText("jTextField1");
         getContentPane().add(focussable, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, -1, -1));
@@ -167,42 +188,39 @@ public class formInscripcion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
+        changueTable(tablaRacers, tabla);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void txtSearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSearchFocusGained
-        String text = txtSearch.getText();
-        if (text.equals(placeholderText)) {
-            unshowPlaceholder();
-        }
+        unshowPlaceholder(txtSearch, "Ingrese el nombre o documento del deportista...");
     }//GEN-LAST:event_txtSearchFocusGained
 
     private void txtSearchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSearchFocusLost
-        String text = txtSearch.getText();
-        if (text.equals("")) {
-            showPlaceholder();
-        }
+        showPlaceholder(txtSearch, "Ingrese el nombre o documento del deportista...");
     }//GEN-LAST:event_txtSearchFocusLost
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
         String text = txtSearch.getText();
-        //filter(text);
+        filter(text);
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
+        changueTable(tabla, tablaRacers);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
         formMain form = new formMain();
         form.setVisible(true);
-        form.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
        focussable.requestFocusInWindow();
     }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
+        
+    }//GEN-LAST:event_btnAddMouseClicked
 
     /**
      * @param args the command line arguments
@@ -238,14 +256,62 @@ public class formInscripcion extends javax.swing.JFrame {
             }
         });
     }
-    void showPlaceholder() {
-        txtSearch.setForeground(Color.decode("#818181"));
-        txtSearch.setText(placeholderText);
+    void changueTable(JTable from, JTable to){
+        int row = from.getSelectedRow();
+        Object[] data = {"","","",""};
+        for (int i = 0; i < 4; i++) {
+            data[i] = from.getValueAt(row, i);
+        }
+        DefaultTableModel fromModel, toModel;
+        fromModel = (DefaultTableModel) from.getModel();
+        toModel = (DefaultTableModel) to.getModel();
+        fromModel.removeRow(row);
+        toModel.addRow(data);
+    }
+    void createColumns(JTable tabla) {
+        tableModel = (DefaultTableModel) tabla.getModel();
+        tableModel.addColumn("Nombre");
+        tableModel.addColumn("Apellido");
+        tableModel.addColumn("N° Documento");
+        tableModel.addColumn("Categoría");
+    }
+    void filter(String query) {
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tableModel);
+        tabla.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(query));
     }
 
-    void unshowPlaceholder() {
-        txtSearch.setText("");
-        txtSearch.setForeground(Color.decode("#000000"));
+    void fillTable() {
+        controllerCiclistas ctrl = new controllerCiclistas();
+        controllerCategorias ctrlCat = new controllerCategorias();
+        try {
+            ResultSet rs = ctrl.fillTable();
+            while (rs.next()) {
+                String nombres = rs.getString("nombres");
+                String apellidos = rs.getString("apellidos");
+                String doc = rs.getString("n_documento");
+                String cat = ctrlCat.getCategoria(rs.getString("fecha_nacimiento"));
+                String[] row = {nombres,apellidos,doc,cat};
+                tableModel.addRow(row);
+            }
+        } catch (Exception e) {
+            System.out.println("Error recorrer array vista: "+ e.getMessage());
+        }
+    }
+
+    void showPlaceholder(JTextField element, String placeholderText) {
+        if (element.getText().equals("")) {
+            element.setForeground(Color.decode("#818181"));
+            element.setText(placeholderText);
+        }
+    }
+    
+    void unshowPlaceholder(JTextField element, String placeholderText) {
+        String text = element.getText();
+        if (text.equals(placeholderText)) {
+            element.setText("");
+            element.setForeground(Color.decode("#000000"));
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -260,11 +326,12 @@ public class formInscripcion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tablaAll;
+    private javax.swing.JTable tabla;
     private javax.swing.JTable tablaRacers;
     private javax.swing.JTextField txtCarrera;
     private javax.swing.JTextField txtDT;

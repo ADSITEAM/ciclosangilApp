@@ -35,7 +35,6 @@ public class formMain extends javax.swing.JFrame {
         btnIscripCarreras = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
         btnInsertar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -53,16 +52,16 @@ public class formMain extends javax.swing.JFrame {
                 btnIscripCarrerasActionPerformed(evt);
             }
         });
-        jPanel2.add(btnIscripCarreras, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 240, 30));
+        jPanel2.add(btnIscripCarreras, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 240, 30));
 
         btnEliminar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
-        btnEliminar.setText("Retiros");
+        btnEliminar.setText("Actualizar Informacion");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 240, 30));
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 240, 30));
 
         btnListar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
         btnListar.setText("Listar Deportistas");
@@ -71,16 +70,7 @@ public class formMain extends javax.swing.JFrame {
                 btnListarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 240, 30));
-
-        btnActualizar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
-        btnActualizar.setText("Actializar Informacion");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 240, 30));
+        jPanel2.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, 240, 30));
 
         btnInsertar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
         btnInsertar.setText("Nuevo Deportista");
@@ -89,7 +79,7 @@ public class formMain extends javax.swing.JFrame {
                 btnInsertarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 240, 30));
+        jPanel2.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 240, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logox300px.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
@@ -128,12 +118,8 @@ public class formMain extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnInsertarActionPerformed
 
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnActualizarActionPerformed
-
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        formDelete form = new formDelete();
+        formEdit form = new formEdit();
         showForm(form);
         this.dispose();
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -179,7 +165,6 @@ public class formMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnInsertar;
     private javax.swing.JButton btnIscripCarreras;

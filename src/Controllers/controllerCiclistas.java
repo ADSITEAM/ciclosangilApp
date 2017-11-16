@@ -6,6 +6,7 @@
 package Controllers;
 
 import Models.modelCiclistas;
+import Models.modelNormalized;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -24,10 +25,28 @@ public class controllerCiclistas {
         model.save(data);
     }
 
-    public ResultSet selectDelete() {
+    public ResultSet fillTable() {
         modelCiclistas model = new modelCiclistas();
-        return model.selectDelete();
+        return model.fillTable();
     }
-
-    
+    public ResultSet selectEdit(String doc){
+        modelCiclistas model = new modelCiclistas();
+        return model.selectEdit(doc);
+    }
+    public void update(Object[] data) {
+        modelCiclistas model = new modelCiclistas();
+        model.update(data);
+    }
+    public void delete(String id){
+        modelCiclistas model = new modelCiclistas();
+        model.delete(id);
+    }
+    public ResultSet getEps(){
+        modelNormalized model = new modelNormalized();
+        return model.getEPS();
+    }
+    public ResultSet getRH(){
+        modelNormalized model = new modelNormalized();
+        return model.getRH();
+    }
 }
