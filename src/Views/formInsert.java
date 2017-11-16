@@ -8,6 +8,7 @@ package Views;
 import Controllers.controllerCiclistas;
 import Controllers.controllerDocs;
 import java.awt.Color;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -25,6 +26,7 @@ public class formInsert extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         allPlaceholders();
+        loadCbx();
 
     }
 
@@ -38,16 +40,14 @@ public class formInsert extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lbTitle = new javax.swing.JLabel();
         txtNombres = new javax.swing.JTextField();
         txtApellidos = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         cbxTipo = new javax.swing.JComboBox<>();
-        txtEps = new javax.swing.JTextField();
-        txtRH = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         Journey = new javax.swing.JComboBox<>();
+        lbTitle = new javax.swing.JLabel();
         txtLugarNac = new javax.swing.JTextField();
         txtNumeroDoc = new javax.swing.JTextField();
         dateChoser = new com.toedter.calendar.JDateChooser();
@@ -72,6 +72,10 @@ public class formInsert extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        cbxEPS = new javax.swing.JComboBox<>();
+        cbxRH = new javax.swing.JComboBox<>();
+        jSeparator1 = new javax.swing.JSeparator();
         txtFocussable = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,12 +91,6 @@ public class formInsert extends javax.swing.JFrame {
             }
         });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitle.setText("Inscripción Deportista");
-        lbTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.add(lbTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 810, -1));
 
         txtNombres.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtNombres.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -125,28 +123,6 @@ public class formInsert extends javax.swing.JFrame {
         cbxTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 210, 24));
 
-        txtEps.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtEps.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtEpsFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtEpsFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtEps, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 370, 110, -1));
-
-        txtRH.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtRH.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtRHFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtRHFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtRH, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 80, -1));
-
         txtDireccion.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -166,6 +142,12 @@ public class formInsert extends javax.swing.JFrame {
         Journey.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Mañana", "Tarde", "Noche" }));
         Journey.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(Journey, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 210, 24));
+
+        lbTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logox100px.png"))); // NOI18N
+        lbTitle.setText(" Sección Inscripción Deportista");
+        lbTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(lbTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 520, -1));
 
         txtLugarNac.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtLugarNac.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -241,7 +223,7 @@ public class formInsert extends javax.swing.JFrame {
                 txtModalidadFocusLost(evt);
             }
         });
-        jPanel1.add(txtModalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 208, -1));
+        jPanel1.add(txtModalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 208, -1));
 
         txtNombrePadre.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtNombrePadre.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -266,14 +248,14 @@ public class formInsert extends javax.swing.JFrame {
         jPanel1.add(txtNombreMadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 208, -1));
 
         btnVolver.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnVolver.setText("Volver");
+        btnVolver.setText("Menú Principal");
         btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 590, 240, -1));
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 210, -1));
 
         btnSubmit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSubmit.setText("Inscribir");
@@ -283,7 +265,7 @@ public class formInsert extends javax.swing.JFrame {
                 btnSubmitActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 520, 210, -1));
+        jPanel1.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 620, 210, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Nombres");
@@ -302,8 +284,8 @@ public class formInsert extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Tipo de sangre");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+        jLabel8.setText("EPS");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Correo");
@@ -331,7 +313,20 @@ public class formInsert extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setText("Modalidad");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel16.setText("Tipo de sangre");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, -1));
+
+        cbxEPS.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        cbxEPS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        jPanel1.add(cbxEPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 520, 210, -1));
+
+        cbxRH.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        cbxRH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        jPanel1.add(cbxRH, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 210, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 810, 10));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 690));
         getContentPane().add(txtFocussable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 60, -1));
@@ -382,22 +377,6 @@ public class formInsert extends javax.swing.JFrame {
     private void txtLugarNacFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLugarNacFocusLost
         showPlaceholder(txtLugarNac, "Lugar de Nacimiento");
     }//GEN-LAST:event_txtLugarNacFocusLost
-
-    private void txtRHFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRHFocusGained
-        unshowPlaceholder(txtRH, "RH (O+)");
-    }//GEN-LAST:event_txtRHFocusGained
-
-    private void txtRHFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRHFocusLost
-        showPlaceholder(txtRH, "RH (O+)");
-    }//GEN-LAST:event_txtRHFocusLost
-
-    private void txtEpsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEpsFocusGained
-        unshowPlaceholder(txtEps, "EPS");
-    }//GEN-LAST:event_txtEpsFocusGained
-
-    private void txtEpsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEpsFocusLost
-        showPlaceholder(txtEps, "EPS");
-    }//GEN-LAST:event_txtEpsFocusLost
 
     private void txtDireccionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionFocusGained
         unshowPlaceholder(txtDireccion, "Dirección de Residencia");
@@ -500,21 +479,17 @@ public class formInsert extends javax.swing.JFrame {
         txtColegio.setText("");
         txtDireccion.setText("");
         txtEmail.setText("");
-        txtEps.setText("");
         txtLugarNac.setText("");
         txtModalidad.setText("");
         txtNombrePadre.setText("");
         txtNombreMadre.setText("");
         txtNumeroDoc.setText("");
-        txtRH.setText("");
         txtTelefono.setText("");
         dateChoser.setDateFormatString("");
         txtFocussable.requestFocusInWindow();
         showPlaceholder(txtNombres, "Nombres");
         showPlaceholder(txtApellidos, "Apellidos");
         showPlaceholder(txtNumeroDoc, "N° de Documento");
-        showPlaceholder(txtRH, "RH (O+)");
-        showPlaceholder(txtEps, "EPS");
         showPlaceholder(txtColegio, "Institución Educativa");
         showPlaceholder(txtDireccion, "Dirección de Residencia");
         showPlaceholder(txtEmail, "Correo Electrónico");
@@ -533,8 +508,8 @@ public class formInsert extends javax.swing.JFrame {
         String placeBorn = txtLugarNac.getText();
         String dateBorn = getDate();
         String school = validateText(txtColegio, "Institución Educativa");
-        String RH = txtRH.getText();
-        String eps = txtEps.getText();
+        int RH = cbxRH.getSelectedIndex();
+        int eps = cbxEPS.getSelectedIndex();
         String direcion = txtDireccion.getText();
         String mail = validateText(txtEmail, "Correo Electrónico");
         String phone = validateText(txtTelefono, "Teléfono");
@@ -543,9 +518,33 @@ public class formInsert extends javax.swing.JFrame {
         String modality = txtModalidad.getText();
         Object[] data = {document, type, firstName, lastName, dateBorn, placeBorn, school, journey, RH, eps, direcion, mail, phone, motherName, fatherName, modality};
         controllerCiclistas ctrl = new controllerCiclistas();
-        controllerDocs docs = new controllerDocs();
         ctrl.save(data);
-        docs.generateDoc(data);
+    }
+    void loadCbx(){
+        loadEps();
+        loadRH();
+    }
+    void loadEps(){
+        controllerCiclistas ctrl = new controllerCiclistas();
+        ResultSet data = ctrl.getEps();
+        try {
+            while (data.next()) {
+                cbxEPS.addItem(data.getString("nombre"));
+            }
+        } catch (Exception e) {
+            System.out.println("Error loading eps");
+        }
+    }
+    void loadRH(){
+        controllerCiclistas ctrl = new controllerCiclistas();
+        ResultSet data = ctrl.getRH();
+        try {
+            while (data.next()) {
+                cbxRH.addItem(data.getString("rh"));
+            }
+        } catch (Exception e) {
+            System.out.println("Error loading rh");
+        }
     }
     String validateText(JTextField txtField, String placeholderText){
         String text;
@@ -559,7 +558,6 @@ public class formInsert extends javax.swing.JFrame {
         SimpleDateFormat Fecha = new SimpleDateFormat("dd-MM-yyyy");
         return Fecha.format(dateChoser.getDate());
     }
-
     void showPlaceholder(JTextField element, String placeholderText) {
         if (element.getText().equals("")) {
             element.setForeground(Color.decode("#818181"));
@@ -579,8 +577,6 @@ public class formInsert extends javax.swing.JFrame {
         showPlaceholder(txtNombres, "Nombres");
         showPlaceholder(txtApellidos, "Apellidos");
         showPlaceholder(txtNumeroDoc, "N° de Documento");
-        showPlaceholder(txtRH, "RH (O+)");
-        showPlaceholder(txtEps, "EPS");
         showPlaceholder(txtColegio, "Institución Educativa");
         showPlaceholder(txtDireccion, "Dirección de Residencia");
         showPlaceholder(txtEmail, "Correo Electrónico");
@@ -595,6 +591,8 @@ public class formInsert extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Journey;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnVolver;
+    private javax.swing.JComboBox<String> cbxEPS;
+    private javax.swing.JComboBox<String> cbxRH;
     private javax.swing.JComboBox<String> cbxTipo;
     private com.toedter.calendar.JDateChooser dateChoser;
     private javax.swing.JLabel jLabel1;
@@ -604,6 +602,7 @@ public class formInsert extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -613,12 +612,12 @@ public class formInsert extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbTitle;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtColegio;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtEps;
     private javax.swing.JTextField txtFocussable;
     private javax.swing.JTextField txtLugarNac;
     private javax.swing.JTextField txtModalidad;
@@ -626,7 +625,6 @@ public class formInsert extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombrePadre;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JTextField txtNumeroDoc;
-    private javax.swing.JTextField txtRH;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 

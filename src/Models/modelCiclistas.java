@@ -5,6 +5,7 @@
  */
 package Models;
 
+import Controllers.controllerDocs;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,6 +17,24 @@ import javax.swing.JOptionPane;
  * @author Aprendiz
  */
 public class modelCiclistas {
+    String getId(String doc){
+        Conexion obj = new Conexion();
+        Connection cnx = obj.getConexBD();
+        String id ="";
+        String query = "select id from ciclistas where n_documento='"+doc+"'";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                id = rs.getString("id");
+                
+            }
+        } catch (Exception e) {
+            System.out.println("Error en getID:");
+            System.out.println(e.getMessage());
+        }
+        return id;
+    }
     public void save(Object[] data){
         Conexion obj = new Conexion();
         Connection cnx = obj.getConexBD();
@@ -27,10 +46,27 @@ public class modelCiclistas {
             }
             int count = statement.executeUpdate();
             JOptionPane.showMessageDialog(null,"Deportista "+data[2].toString()+" "+data[3].toString()+" inscrito correctamente.");
+            controllerDocs docs = new controllerDocs();
+            String doc = data[0].toString();
+            docs.generateDoc(getId(doc));
         } catch (Exception e) {
             System.out.println("Error en save ciclistas:");
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "Error al inscribir el deportista.");
+        }
+    }
+
+    public ResultSet selectDoc(String id){
+        Conexion obj = new Conexion();
+        Connection cnx = obj.getConexBD();
+        String query = "SELECT ciclistas.*, eps.nombre as nombreEPS, rh.RH as nombreRH FROM ((ciclistas INNER JOIN eps ON eps.id = ciclistas.eps) INNER JOIN rh ON rh.id = ciclistas.rh) where ciclistas.id = '"+id+"'";
+        try {
+            Statement st = cnx.createStatement();
+            return st.executeQuery(query);
+        } catch (Exception e) {
+            System.out.println("Error en select from docs:");
+            System.out.println(e.getMessage());
+            return null;
         }
     }
     public void update(Object[] data){

@@ -5,7 +5,9 @@
  */
 package Controllers;
 
+import Models.modelCiclistas;
 import java.io.FileOutputStream;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -21,38 +23,61 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
  */
 public class controllerDocs {
 
-    public void generateDoc(Object[] data) {
-        controllerCategorias cats = new controllerCategorias();
+    public void generateDoc(String id) {
+        modelCiclistas model = new modelCiclistas();
+        ResultSet data = model.selectDoc(id);
         Date today = new Date();
         today.setHours(0);
         SimpleDateFormat Fecha = new SimpleDateFormat("dd/MM/yyyy");
         String placeDate = "San Gil " + Fecha.format(today);
-        String names = data[2].toString() + " " + data[3].toString();
+        controllerCategorias cats = new controllerCategorias();
+        String names = "";
         String document = "";
-        if (data[1].toString().equals("0")) {
-            document = "T.I. ";
-        } else if (data[1].toString().equals("1")) {
-            document = "C.C. ";
-        }
-        document = document + data[0].toString();
         String born = "";
-        
+        String journey = "";
+        String category = "";
+        String blood = "", eps = "", school="", dir="", tel="", mail="",modal="",fn="",mn="";
+
         try {
-            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-            Date d = format.parse(data[4].toString());
-            born = Fecha.format(d);
+            while (data.next()) {
+                names = data.getString("nombres") + " " + data.getString("apellidos");
+                if (data.getInt("tipo_documento") == 0) {
+                    document = "T.I. ";
+                } else if (data.getInt("tipo_documento") == 1) {
+                    document = "C.C. ";
+                }
+                document = document + data.getString("n_documento");
+                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+                Date d = format.parse(data.getString("fecha_nacimiento"));
+                born = Fecha.format(d);
+                born = data.getString("lugar_nacimiento") + " " + born;
+                switch (data.getInt("jornada")){
+                    case 1:
+                        journey = "Mañana";
+                        break;
+                    case 2:
+                        journey = "Tarde";
+                        break;
+                    case 3:
+                        journey = "Noche";
+                        break;
+                }
+                category = cats.getCategoria(data.getString("fecha_nacimiento"));
+                blood = data.getString("nombreRH");                
+                eps = data.getString("nombreEPS");
+                school = data.getString("colegio");
+                dir = data.getString("direccion");
+                tel = data.getString("telefono");
+                modal = data.getString("modalidad");
+                mail = data.getString("email");
+                fn = data.getString("nombre_padre");                
+                mn = data.getString("nombre_madre");
+
+            }
         } catch (Exception e) {
         }
-        born = data[5].toString() + " " + born;
-        String journey = "";
-        if (data[7].toString().equals("1")) {
-            journey = "Mañana";
-        }else if(data[7].toString().equals("2")){
-            journey = "Tarde";
-        }else if(data[7].toString().equals("3")){
-            journey = "Noche";
-        }
-        String category = cats.getCategoria(data[4].toString());
+
+        
         try {
             XWPFDocument doc = new XWPFDocument(OPCPackage.open("docs/base.docx"));
             for (XWPFParagraph p : doc.getParagraphs()) {
@@ -77,15 +102,15 @@ public class controllerDocs {
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("blood")) {
-                            text = text.replace("blood", data[8].toString());
+                            text = text.replace("blood", blood);
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("eps")) {
-                            text = text.replace("eps", data[9].toString());
+                            text = text.replace("eps", eps);
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("SCHOOL")) {
-                            text = text.replace("SCHOOL", data[6].toString());
+                            text = text.replace("SCHOOL", school);
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("journ")) {
@@ -94,20 +119,19 @@ public class controllerDocs {
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("DRC")) {
-                            System.out.println("Is resicence");
-                            text = text.replace("DRC", data[10].toString());
+                            text = text.replace("DRC", dir);
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("phone")) {
-                            text = text.replace("phone", data[12].toString());
+                            text = text.replace("phone", tel);
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("correo")) {
-                            text = text.replace("correo", data[11].toString());
+                            text = text.replace("correo", mail);
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("modality")) {
-                            text = text.replace("modality", data[15].toString());
+                            text = text.replace("modality", modal);
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("category")) {
@@ -115,11 +139,11 @@ public class controllerDocs {
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("fatherName")) {
-                            text = text.replace("fatherName", data[14].toString());
+                            text = text.replace("fatherName", fn);
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("motherName")) {
-                            text = text.replace("motherName", data[13].toString());
+                            text = text.replace("motherName", mn);
                             r.setText(text, 0);
                         }
                     }
