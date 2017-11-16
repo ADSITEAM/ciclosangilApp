@@ -75,6 +75,8 @@ public class controllerDocs {
 
             }
         } catch (Exception e) {
+            System.out.println("Error en controller Doc, recorriendo resulSet");
+            System.out.println(e.getMessage());
         }
 
         
@@ -150,8 +152,9 @@ public class controllerDocs {
                 }
             }
             JOptionPane.showMessageDialog(null, "Documento Creado Correctamente");
-            doc.write(new FileOutputStream(names + ".docx"));
+            doc.write(new FileOutputStream("docs/ligaDocs/"+names+ ".docx"));
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error inesperado al crear documento");
             System.out.println("Error al generar documento");
             System.out.println(e.getMessage());
         }

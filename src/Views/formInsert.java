@@ -320,11 +320,11 @@ public class formInsert extends javax.swing.JFrame {
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, -1));
 
         cbxEPS.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        cbxEPS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        cbxEPS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una EPS" }));
         jPanel1.add(cbxEPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 520, 210, -1));
 
         cbxRH.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        cbxRH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        cbxRH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo de sangre" }));
         jPanel1.add(cbxRH, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 210, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 810, 10));
 
@@ -500,6 +500,7 @@ public class formInsert extends javax.swing.JFrame {
         showPlaceholder(txtTelefono, "Teléfono");
     }
     void save(){
+        controllerCiclistas ctrl = new controllerCiclistas();
         String firstName = txtNombres.getText();
         String lastName = txtApellidos.getText();
         String document = txtNumeroDoc.getText();
@@ -508,8 +509,8 @@ public class formInsert extends javax.swing.JFrame {
         String placeBorn = txtLugarNac.getText();
         String dateBorn = getDate();
         String school = validateText(txtColegio, "Institución Educativa");
-        int RH = cbxRH.getSelectedIndex();
-        int eps = cbxEPS.getSelectedIndex();
+        int RH = ctrl.getID(cbxRH.getSelectedItem().toString(), "RH");
+        int eps = ctrl.getID(cbxEPS.getSelectedItem().toString(), "eps");
         String direcion = txtDireccion.getText();
         String mail = validateText(txtEmail, "Correo Electrónico");
         String phone = validateText(txtTelefono, "Teléfono");
@@ -517,7 +518,7 @@ public class formInsert extends javax.swing.JFrame {
         String fatherName = validateText(txtNombrePadre, "Nombre del Padre");
         String modality = txtModalidad.getText();
         Object[] data = {document, type, firstName, lastName, dateBorn, placeBorn, school, journey, RH, eps, direcion, mail, phone, motherName, fatherName, modality};
-        controllerCiclistas ctrl = new controllerCiclistas();
+        
         ctrl.save(data);
     }
     void loadCbx(){
