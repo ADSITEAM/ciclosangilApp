@@ -44,7 +44,9 @@ public class controllerCiclistas {
     public ResultSet getEps() {
         return modelNormalized.getEPS();
     }
-
+    public String getEps(String id) {
+        return modelNormalized.getEPS(id);
+    }
     public ResultSet getRH() {
         return modelNormalized.getRH();
     }

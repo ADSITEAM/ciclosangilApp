@@ -5,6 +5,7 @@
  */
 package Views;
 
+import Controllers.controllerLogin;
 import javax.swing.JFrame;
 
 /**
@@ -18,8 +19,9 @@ public class formMain extends javax.swing.JFrame {
      */
     public formMain() {
         initComponents();
-        setLocationRelativeTo(null);
         setResizable(false);
+        showUser();
+        
     }
 
     /**
@@ -38,6 +40,8 @@ public class formMain extends javax.swing.JFrame {
         btnInsertar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        lbUser = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -52,7 +56,7 @@ public class formMain extends javax.swing.JFrame {
                 btnIscripCarrerasActionPerformed(evt);
             }
         });
-        jPanel2.add(btnIscripCarreras, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 240, 30));
+        jPanel2.add(btnIscripCarreras, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 240, 30));
 
         btnEliminar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
         btnEliminar.setText("Actualizar Informacion");
@@ -61,7 +65,7 @@ public class formMain extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 240, 30));
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 240, 30));
 
         btnListar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
         btnListar.setText("Listar Deportistas");
@@ -70,7 +74,7 @@ public class formMain extends javax.swing.JFrame {
                 btnListarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, 240, 30));
+        jPanel2.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 240, 30));
 
         btnInsertar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
         btnInsertar.setText("Nuevo Deportista");
@@ -79,20 +83,36 @@ public class formMain extends javax.swing.JFrame {
                 btnInsertarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 240, 30));
+        jPanel2.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 240, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logox300px.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 25)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logox100px.png"))); // NOI18N
+        jLabel1.setText(" Menú Principal");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 10, 330));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 580, -1));
+
+        lbUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/man-user.png"))); // NOI18N
+        lbUser.setText(" narias");
+        jPanel2.add(lbUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 120, -1));
+
+        btnSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 90, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 854, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +123,6 @@ public class formMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIscripCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIscripCarrerasActionPerformed
-        this.dispose();
         formInscripcion form = new formInscripcion();
         showForm(form);
     }//GEN-LAST:event_btnIscripCarrerasActionPerformed
@@ -115,14 +134,17 @@ public class formMain extends javax.swing.JFrame {
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
         formInsert form = new formInsert();
         showForm(form);
-        this.dispose();
     }//GEN-LAST:event_btnInsertarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         formEdit form = new formEdit();
         showForm(form);
-        this.dispose();
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        formLogin form = new formLogin();
+        showForm(form);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,8 +180,12 @@ public class formMain extends javax.swing.JFrame {
             }
         });
     }
-
+    void showUser(){
+        controllerLogin ctrl = new controllerLogin();
+        lbUser.setText(ctrl.getUser());
+    }
     void showForm(JFrame form) {
+        this.dispose();
         form.setVisible(true);
         form.setLocationRelativeTo(null);
     }
@@ -169,8 +195,10 @@ public class formMain extends javax.swing.JFrame {
     private javax.swing.JButton btnInsertar;
     private javax.swing.JButton btnIscripCarreras;
     private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbUser;
     // End of variables declaration//GEN-END:variables
 }

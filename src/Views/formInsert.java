@@ -143,7 +143,7 @@ public class formInsert extends javax.swing.JFrame {
         Journey.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(Journey, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 210, 24));
 
-        lbTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbTitle.setFont(new java.awt.Font("Tahoma", 0, 25)); // NOI18N
         lbTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logox100px.png"))); // NOI18N
         lbTitle.setText(" Sección Inscripción Deportista");
         lbTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -541,7 +541,7 @@ public class formInsert extends javax.swing.JFrame {
         ResultSet data = ctrl.getRH();
         try {
             while (data.next()) {
-                cbxRH.addItem(data.getString("rh"));
+                cbxRH.addItem(data.getString("nombre"));
             }
         } catch (Exception e) {
             System.out.println("Error loading rh");

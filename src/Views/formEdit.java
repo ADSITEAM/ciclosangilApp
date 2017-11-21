@@ -151,7 +151,7 @@ public class formEdit extends javax.swing.JFrame {
                 txtEmailFocusLost(evt);
             }
         });
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 370, 180, -1));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 370, 200, -1));
 
         txtColegio.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtColegio.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -162,7 +162,7 @@ public class formEdit extends javax.swing.JFrame {
                 txtColegioFocusLost(evt);
             }
         });
-        jPanel1.add(txtColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 330, 180, -1));
+        jPanel1.add(txtColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 330, 200, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("EPS");
@@ -177,7 +177,7 @@ public class formEdit extends javax.swing.JFrame {
                 txtNumeroDocFocusLost(evt);
             }
         });
-        jPanel1.add(txtNumeroDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 290, 180, -1));
+        jPanel1.add(txtNumeroDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 290, 200, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Documeto");
@@ -196,7 +196,7 @@ public class formEdit extends javax.swing.JFrame {
                 txtNombresFocusLost(evt);
             }
         });
-        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, 300, -1));
+        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 210, 320, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Apellidos");
@@ -226,7 +226,7 @@ public class formEdit extends javax.swing.JFrame {
                 txtDireccionFocusLost(evt);
             }
         });
-        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 410, 300, -1));
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 410, 320, -1));
 
         cbxJornada.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         cbxJornada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Mañana", "Tarde", "Noche" }));
@@ -247,7 +247,7 @@ public class formEdit extends javax.swing.JFrame {
                 txtApellidosFocusLost(evt);
             }
         });
-        jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 250, 300, -1));
+        jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 250, 320, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Estuduios");
@@ -291,7 +291,7 @@ public class formEdit extends javax.swing.JFrame {
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, -1, -1));
 
         cbxEPS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
-        jPanel1.add(cbxEPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 450, 300, -1));
+        jPanel1.add(cbxEPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 450, 320, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 570));
 
@@ -518,15 +518,17 @@ public class formEdit extends javax.swing.JFrame {
         String doc = tabla.getValueAt(row, 2).toString();
         controllerCiclistas ctrl = new controllerCiclistas();
         ResultSet data = ctrl.selectEdit(doc);
+        
         try {
             unshowAllPlaceholders();
             while (data.next()) {
                 id = data.getString("id");
+                String eps = ctrl.getEps(data.getString("eps"));
                 txtNombres.setText(data.getString("nombres"));
                 txtApellidos.setText(data.getString("apellidos"));
                 txtColegio.setText(data.getString("colegio"));
                 txtNumeroDoc.setText(data.getString("n_documento"));
-                cbxEPS.setSelectedIndex(data.getInt("eps"));
+                cbxEPS.setSelectedItem(eps);
                 txtDireccion.setText(data.getString("direccion"));
                 txtEmail.setText(data.getString("email"));
                 txtTelefono.setText(data.getString("telefono"));
@@ -547,7 +549,7 @@ public class formEdit extends javax.swing.JFrame {
         String nombres = txtNombres.getText();
         String apellidos = txtApellidos.getText();
         String tel = txtTelefono.getText();
-        int eps = cbxEPS.getSelectedIndex();
+        int eps = ctrl.getID(cbxEPS.getSelectedItem().toString(), "eps");
         int jor = cbxJornada.getSelectedIndex();
         String dir = txtDireccion.getText();
         Object[] data = {id,doc,type,nombres,apellidos,col,jor,mail,tel,dir,eps};

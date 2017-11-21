@@ -20,4 +20,7 @@ public class controllerLogin {
     public int getRol(String user){
         return model.getRol(user);
     }
+    public String getUser(){
+        return model.getUser();
+    }
 }

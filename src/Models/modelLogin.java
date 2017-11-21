@@ -14,7 +14,7 @@ import java.sql.Statement;
  * @author Aprendiz
  */
 public class modelLogin {
-
+    static String username;
     Conexion obj = new Conexion();
     Connection cnx = obj.getConexBD();
 
@@ -23,20 +23,22 @@ public class modelLogin {
     public int validarLogin(String user, String pass) {
         int ContarUsu = 0;
         try {
-            String sql = "select Count(username) from usuarios where username = '" + user + "' and password = '" + pass + "'";
+            String sql = "select Count(username), username from usuarios where username = '" + user + "' and password = '" + pass + "'";
             Statement st = cnx.createStatement();
             ResultSet rsUsu = st.executeQuery(sql);
 
             while (rsUsu.next()) {
                 ContarUsu = rsUsu.getInt(1);
+                if(ContarUsu==1){
+                    username = rsUsu.getString(2);
+                }
             }
-
+            
         } catch (Exception e) {
             System.out.println("Login BD -- validar " + e.getMessage());
         }
         return ContarUsu;
     }
-    
     public int getRol(String user){
         int rol = 0;
         try {
@@ -54,5 +56,7 @@ public class modelLogin {
         
         return rol;
     }
-
+    public String getUser(){
+        return username;
+    }
 }

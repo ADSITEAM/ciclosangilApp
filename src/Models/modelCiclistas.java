@@ -59,7 +59,7 @@ public class modelCiclistas {
     public ResultSet selectDoc(String id){
         Conexion obj = new Conexion();
         Connection cnx = obj.getConexBD();
-        String query = "SELECT ciclistas.*, eps.nombre as nombreEPS, rh.RH as nombreRH FROM ((ciclistas INNER JOIN eps ON eps.id = ciclistas.eps) INNER JOIN rh ON rh.id = ciclistas.rh) where ciclistas.id = '"+id+"'";
+        String query = "SELECT ciclistas.*, eps.nombre as nombreEPS, rh.nombre as nombreRH FROM ((ciclistas INNER JOIN eps ON eps.id = ciclistas.eps) INNER JOIN rh ON rh.id = ciclistas.rh) where ciclistas.id = '"+id+"'";
         try {
             Statement st = cnx.createStatement();
             return st.executeQuery(query);

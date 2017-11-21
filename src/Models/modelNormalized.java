@@ -14,9 +14,9 @@ import java.sql.Statement;
  * @author user
  */
 public class modelNormalized {
+    Conexion obj = new Conexion();
+    Connection cnx = obj.getConexBD();
     public ResultSet getEPS(){
-        Conexion obj = new Conexion();
-        Connection cnx = obj.getConexBD();
         String query = "select * from eps order by(nombre)";
         try {
             Statement st = cnx.createStatement();
@@ -27,9 +27,23 @@ public class modelNormalized {
             return null;
         }
     }
+    public String getEPS(String id){
+        String query = "select nombre from eps where id ='"+id+"'";
+        try {
+            Statement st = cnx.createStatement();
+            String eps = "";
+            ResultSet data = st.executeQuery(query);
+            while (data.next()) {
+                eps =data.getString("nombre");
+            }
+            return eps;
+        } catch (Exception e) {
+            System.out.println("Error en select eps");
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
     public ResultSet getRH(){
-        Conexion obj = new Conexion();
-        Connection cnx = obj.getConexBD();
         String query = "select * from RH";
         try {
             Statement st = cnx.createStatement();
@@ -41,10 +55,9 @@ public class modelNormalized {
         }
     }
     public int getID(String name, String table){
-        Conexion obj = new Conexion();
-        Connection cnx = obj.getConexBD();
         int id = 0;
-        String query ="SELECT id from "+table+" where nombre = '"+name+"'";
+        System.out.println(name+ " "+table);
+        String query ="select id from "+table+" where nombre = '"+name+"'";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
