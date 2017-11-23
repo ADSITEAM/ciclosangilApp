@@ -14,6 +14,7 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 /**
@@ -22,34 +23,35 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
  */
 public class controllerInscripciones {
 
-    public static void main(String[] args) throws Exception {
-
-        //Blank Document
-        XWPFDocument document = new XWPFDocument();
-
+    public void generarInscripcion(String[] raceData, String[][] racers) {
         try {
-            XWPFDocument doc = new XWPFDocument(OPCPackage.open("docs/planilla.docx"));
+            XWPFDocument doc = new XWPFDocument(OPCPackage.open("docs/planilla2.docx"));
             for (XWPFParagraph p : doc.getParagraphs()) {
                 List<XWPFRun> runs = p.getRuns();
                 if (runs != null) {
                     for (XWPFRun r : runs) {
                         String text = r.getText(0);
+                        if (text != null && text.contains("RaceName")) {
+                            text = text.replace("RaceName", raceData[0]);
+                            r.setText(text, 0);
+                        }
                         if (text != null && text.contains("delegado")) {
-                            text = text.replace("delegado", "Omar Galvis");
+                            text = text.replace("delegado", raceData[1]);
+                            r.setText(text, 0);
+                        }
+                         if (text != null && text.contains("telDel")) {
+                            text = text.replace("telDel", raceData[2]);
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("DT")) {
-                            text = text.replace("DT", "Wilson Zambrano Larrota");
+                            text = text.replace("DT", raceData[3]);
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("telDir")) {
-                            text = text.replace("telDir", "3187094963");
+                            text = text.replace("telDir", raceData[4]);
                             r.setText(text, 0);
                         }
-                        if (text != null && text.contains("telDEL")) {
-                            text = text.replace("telDir", "3187094969");
-                            r.setText(text, 0);
-                        }
+                       
                         if (text != null && text.contains("DiligencedName")) {
                             text = text.replace("DiligencedName", "Nicolás Mateo Arias");
                             r.setText(text, 0);
@@ -58,30 +60,23 @@ public class controllerInscripciones {
                             text = text.replace("DateSended", "16/03/2017");
                             r.setText(text, 0);
                         }
-                        if (text != null && text.contains("table")) {
-                            text = text.replace("table", "");
-                            XWPFTable table = doc.createTable();
-
-                            XWPFTableRow tableRowOne = table.getRow(0);
-                            tableRowOne.getCell(0).setText("N°");
-                            tableRowOne.addNewTableCell().setText("col two, row one");
-                            tableRowOne.addNewTableCell().setText("col three, row one");
-                            //create second row
-                            XWPFTableRow tableRowTwo = table.createRow();
-                            tableRowTwo.getCell(0).setText("col one, row two");
-                            tableRowTwo.getCell(1).setText("col two, row two");
-                            tableRowTwo.getCell(2).setText("col three, row two");
-
-                            //create third row
-                            XWPFTableRow tableRowThree = table.createRow();
-                            tableRowThree.getCell(0).setText("col one, row three");
-                            tableRowThree.getCell(1).setText("col two, row three");
-                            tableRowThree.getCell(2).setText("col three, row three");
-                            r.setText(text, 0);
-                        }
                     }
                 }
             }
+            XWPFTableRow row;
+            for (XWPFTable tbl : doc.getTables()) {
+                for (int i = 0; i < racers.length; i++) {
+                    row = tbl.createRow();
+                    row.getCell(0).setText("" + (i + 1));
+                    row.getCell(1).setText(racers[i][1]);
+                    row.getCell(2).setText(racers[i][0]);
+                    row.getCell(3).setText();
+                    row.getCell(4).setText(els[i][3]);
+                    row.getCell(5).setText("Ciclo San Gil");
+                    row.getCell(7).setText(els[i][4]);
+                }
+            }
+
             JOptionPane.showMessageDialog(null, "Documento Creado Correctamente");
             doc.write(new FileOutputStream("docs/inscripciones/carrera.docx"));
         } catch (Exception e) {
@@ -89,6 +84,5 @@ public class controllerInscripciones {
             System.out.println("Error al generar documento");
             System.out.println(e.getMessage());
         }
-        System.out.println("create_table.docx written successully");
     }
 }

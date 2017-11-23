@@ -38,7 +38,7 @@ public class modelCiclistas {
     public void save(Object[] data){
         Conexion obj = new Conexion();
         Connection cnx = obj.getConexBD();
-        String query = "insert into ciclistas (n_documento, tipo_documento, nombres,apellidos,fecha_nacimiento,lugar_nacimiento,colegio,jornada,rh,eps,direccion,email,telefono,nombre_madre,nombre_padre,modalidad) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "insert into ciclistas (n_documento, tipo_documento, nombres,apellidos,fecha_nacimiento,lugar_nacimiento,colegio,jornada,rh,eps,direccion,email,telefono,nombre_madre,nombre_padre,modalidad,sexo) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
             for (int i = 0; i < data.length; i++) {
@@ -112,7 +112,7 @@ public class modelCiclistas {
     public ResultSet fillTable(){
         Conexion obj = new Conexion();
         Connection cnx = obj.getConexBD();
-        String query = "select n_documento, nombres, apellidos,fecha_nacimiento from ciclistas";
+        String query = "select n_documento, nombres, apellidos, sexo, fecha_nacimiento from ciclistas";
         try {
             Statement st = cnx.createStatement();
             return st.executeQuery(query);

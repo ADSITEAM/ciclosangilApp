@@ -164,6 +164,11 @@ public class formInscripcion extends javax.swing.JFrame {
         jPanel1.add(txtTelDelegado, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 160, 100, -1));
 
         jButton3.setText("Generar Inscripción");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 500, -1, -1));
 
         btnVolver.setText("Menú Principal ");
@@ -222,6 +227,10 @@ public class formInscripcion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAddMouseClicked
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        sendInscripcion();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -258,8 +267,8 @@ public class formInscripcion extends javax.swing.JFrame {
     }
     void changueTable(JTable from, JTable to){
         int row = from.getSelectedRow();
-        Object[] data = {"","","",""};
-        for (int i = 0; i < 4; i++) {
+        Object[] data = new Object[5];
+        for (int i = 0; i < 5; i++) {
             data[i] = from.getValueAt(row, i);
         }
         DefaultTableModel fromModel, toModel;
@@ -270,8 +279,9 @@ public class formInscripcion extends javax.swing.JFrame {
     }
     void createColumns(JTable tabla) {
         tableModel = (DefaultTableModel) tabla.getModel();
-        tableModel.addColumn("Nombre");
-        tableModel.addColumn("Apellido");
+        tableModel.addColumn("Nombres");
+        tableModel.addColumn("Apellidos");
+        tableModel.addColumn("Sexo");
         tableModel.addColumn("N° Documento");
         tableModel.addColumn("Categoría");
     }
@@ -289,6 +299,7 @@ public class formInscripcion extends javax.swing.JFrame {
             while (rs.next()) {
                 String nombres = rs.getString("nombres");
                 String apellidos = rs.getString("apellidos");
+                String sexo = rs.getString("sexo");
                 String doc = rs.getString("n_documento");
                 String cat = ctrlCat.getCategoria(rs.getString("fecha_nacimiento"));
                 String[] row = {nombres,apellidos,doc,cat};
@@ -311,6 +322,23 @@ public class formInscripcion extends javax.swing.JFrame {
         if (text.equals(placeholderText)) {
             element.setText("");
             element.setForeground(Color.decode("#000000"));
+        }
+    }
+    void sendInscripcion(){
+        String raceName = txtCarrera.getText();
+        String dt = txtDT.getText();
+        String dtTel = txtTelDT.getText();
+        String delegado = txtDelegado.getText();
+        String delTel = txtTelDelegado.getText();
+        String[] raceData = {raceName,dt,dtTel,delegado,delTel};
+        DefaultTableModel model = (DefaultTableModel) tablaRacers.getModel();
+        int rows = model.getRowCount();
+        int cols = model.getColumnCount();
+        String[][] racers = new String[rows][cols];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                racers[i][j] = model.getValueAt(i, j).toString();
+            }
         }
     }
 

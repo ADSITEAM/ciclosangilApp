@@ -76,6 +76,8 @@ public class formInsert extends javax.swing.JFrame {
         cbxEPS = new javax.swing.JComboBox<>();
         cbxRH = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel17 = new javax.swing.JLabel();
+        cbxSex = new javax.swing.JComboBox<>();
         txtFocussable = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -265,7 +267,7 @@ public class formInsert extends javax.swing.JFrame {
                 btnSubmitActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 620, 210, -1));
+        jPanel1.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 630, 210, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Nombres");
@@ -327,6 +329,14 @@ public class formInsert extends javax.swing.JFrame {
         cbxRH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo de sangre" }));
         jPanel1.add(cbxRH, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 210, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 810, 10));
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel17.setText("Sexo");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, -1, -1));
+
+        cbxSex.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        cbxSex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un Genero", "Masculino", "Femenino" }));
+        jPanel1.add(cbxSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 570, 210, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 690));
         getContentPane().add(txtFocussable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 60, -1));
@@ -517,7 +527,8 @@ public class formInsert extends javax.swing.JFrame {
         String motherName = validateText(txtNombreMadre, "Nombre de la Madre");
         String fatherName = validateText(txtNombrePadre, "Nombre del Padre");
         String modality = txtModalidad.getText();
-        Object[] data = {document, type, firstName, lastName, dateBorn, placeBorn, school, journey, RH, eps, direcion, mail, phone, motherName, fatherName, modality};
+        int sex = cbxSex.getSelectedIndex();
+        Object[] data = {document, type, firstName, lastName, dateBorn, placeBorn, school, journey, RH, eps, direcion, mail, phone, motherName, fatherName, modality, sex};
         
         ctrl.save(data);
     }
@@ -594,6 +605,7 @@ public class formInsert extends javax.swing.JFrame {
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cbxEPS;
     private javax.swing.JComboBox<String> cbxRH;
+    private javax.swing.JComboBox<String> cbxSex;
     private javax.swing.JComboBox<String> cbxTipo;
     private com.toedter.calendar.JDateChooser dateChoser;
     private javax.swing.JLabel jLabel1;
@@ -604,6 +616,7 @@ public class formInsert extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
