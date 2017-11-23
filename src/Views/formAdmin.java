@@ -5,6 +5,10 @@
  */
 package Views;
 
+import Models.modelEPS;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author user
@@ -33,6 +37,10 @@ public class formAdmin extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         lbUser = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
+        btnEPS = new javax.swing.JButton();
+        btnNewUser = new javax.swing.JButton();
+        btnEPS1 = new javax.swing.JButton();
+        btnNewUser1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -44,16 +52,16 @@ public class formAdmin extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/locked x64.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 60, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel2.setText("Sección de Administrador");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 680, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 600, 10));
 
         lbUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/man-user.png"))); // NOI18N
         lbUser.setText(" narias");
-        jPanel1.add(lbUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 120, -1));
+        jPanel1.add(lbUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 120, -1));
 
         btnCancel.setBackground(new java.awt.Color(102, 0, 0));
         btnCancel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -65,16 +73,83 @@ public class formAdmin extends javax.swing.JFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 100, 30));
+        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 100, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 510));
+        btnEPS.setBackground(new java.awt.Color(0, 102, 51));
+        btnEPS.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnEPS.setForeground(new java.awt.Color(255, 255, 255));
+        btnEPS.setText("Eliminar EPS");
+        btnEPS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEPSActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 220, 30));
+
+        btnNewUser.setBackground(new java.awt.Color(0, 0, 51));
+        btnNewUser.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnNewUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnNewUser.setText("Nuevo Usuario");
+        btnNewUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewUserActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 220, 30));
+
+        btnEPS1.setBackground(new java.awt.Color(0, 102, 51));
+        btnEPS1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnEPS1.setForeground(new java.awt.Color(255, 255, 255));
+        btnEPS1.setText("Nueva EPS");
+        btnEPS1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEPS1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEPS1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 220, 30));
+
+        btnNewUser1.setBackground(new java.awt.Color(0, 0, 51));
+        btnNewUser1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnNewUser1.setForeground(new java.awt.Color(255, 255, 255));
+        btnNewUser1.setText("Editar Usuario");
+        btnNewUser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewUser1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNewUser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 220, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
+        formLogin form = new formLogin();
+        showForm(form);
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnEPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEPSActionPerformed
+        formDeleteEPS form = new formDeleteEPS();
+        form.setVisible(true);
+    }//GEN-LAST:event_btnEPSActionPerformed
+
+    private void btnNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUserActionPerformed
+        formNewUser form = new formNewUser();
+        showForm(form);
+    }//GEN-LAST:event_btnNewUserActionPerformed
+
+    private void btnEPS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEPS1ActionPerformed
+        String EPS = JOptionPane.showInputDialog(null, "Ingrese la nueva EPS");
+        if (!(EPS == null)) {
+            modelEPS model = new modelEPS();
+            model.save(EPS);
+        }
+    }//GEN-LAST:event_btnEPS1ActionPerformed
+
+    private void btnNewUser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUser1ActionPerformed
+
+    }//GEN-LAST:event_btnNewUser1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,8 +186,18 @@ public class formAdmin extends javax.swing.JFrame {
         });
     }
 
+    void showForm(JFrame form) {
+        this.dispose();
+        form.setVisible(true);
+        form.setLocationRelativeTo(null);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnEPS;
+    private javax.swing.JButton btnEPS1;
+    private javax.swing.JButton btnNewUser;
+    private javax.swing.JButton btnNewUser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

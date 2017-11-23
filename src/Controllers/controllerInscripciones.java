@@ -70,15 +70,15 @@ public class controllerInscripciones {
                     row.getCell(0).setText("" + (i + 1));
                     row.getCell(1).setText(racers[i][1]);
                     row.getCell(2).setText(racers[i][0]);
-                    row.getCell(3).setText();
-                    row.getCell(4).setText(els[i][3]);
+                    row.getCell(3).setText(racers[i][2]);
+                    row.getCell(4).setText(racers[i][4]);
                     row.getCell(5).setText("Ciclo San Gil");
-                    row.getCell(7).setText(els[i][4]);
+                    row.getCell(7).setText(racers[i][3]);
                 }
             }
 
             JOptionPane.showMessageDialog(null, "Documento Creado Correctamente");
-            doc.write(new FileOutputStream("docs/inscripciones/carrera.docx"));
+            doc.write(new FileOutputStream("docs/inscripciones/"+raceData[0]+".docx"));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error inesperado al crear documento");
             System.out.println("Error al generar documento");

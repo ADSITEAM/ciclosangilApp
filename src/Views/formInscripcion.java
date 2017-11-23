@@ -7,8 +7,10 @@ package Views;
 
 import Controllers.controllerCategorias;
 import Controllers.controllerCiclistas;
+import Controllers.controllerInscripciones;
 import java.awt.Color;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -25,6 +27,7 @@ public class formInscripcion extends javax.swing.JFrame {
      * Creates new form formInscripcion
      */
     DefaultTableModel tableModel;
+
     public formInscripcion() {
         initComponents();
         createColumns(tablaRacers);
@@ -81,7 +84,7 @@ public class formInscripcion extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(tablaRacers);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 440, 270));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 210, 530, 270));
 
         btnDelete.setText("<<");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +92,7 @@ public class formInscripcion extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, -1, -1));
+        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, -1, -1));
 
         txtSearch.setToolTipText("Ingrese Tarjeta de Identidad");
         txtSearch.setBorder(null);
@@ -106,7 +109,7 @@ public class formInscripcion extends javax.swing.JFrame {
                 txtSearchKeyReleased(evt);
             }
         });
-        jPanel1.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 410, 40));
+        jPanel1.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 500, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
@@ -114,7 +117,7 @@ public class formInscripcion extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(0, 102, 153));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 440, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 530, 10));
 
         btnAdd.setText(">>");
         btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -127,41 +130,41 @@ public class formInscripcion extends javax.swing.JFrame {
                 btnAddActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, -1, -1));
+        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, -1, -1));
 
         jScrollPane3.setViewportView(tabla);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 450, 270));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 540, 270));
 
         jLabel2.setText("Teléfono");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 110, -1, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 90, -1, 20));
 
         jLabel3.setText("Carrera");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, -1, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 40, -1, 30));
 
         jLabel4.setText("Director Técnico");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, -1, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, -1, 30));
 
         jLabel5.setText("Delegado");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, -1, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, -1, 20));
 
         jLabel6.setText("Teléfono");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 160, -1, 20));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 140, -1, 20));
 
         txtCarrera.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, 340, 30));
+        jPanel1.add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 40, 440, 30));
 
         txtDT.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, 180, -1));
+        jPanel1.add(txtDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 90, 230, -1));
 
         txtDelegado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtDelegado, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, 180, -1));
+        jPanel1.add(txtDelegado, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, 230, -1));
 
         txtTelDT.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtTelDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 110, 100, -1));
+        jPanel1.add(txtTelDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 90, 140, -1));
 
         txtTelDelegado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(txtTelDelegado, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 160, 100, -1));
+        jPanel1.add(txtTelDelegado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 140, 140, -1));
 
         jButton3.setText("Generar Inscripción");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +172,7 @@ public class formInscripcion extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 500, -1, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 500, -1, -1));
 
         btnVolver.setText("Menú Principal ");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -177,14 +180,14 @@ public class formInscripcion extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 500, 120, -1));
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 500, 120, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 25)); // NOI18N
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logox100px.png"))); // NOI18N
         jLabel7.setText("  Sección de Inscripciones");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 450, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 450, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 550));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 540));
 
         focussable.setText("jTextField1");
         getContentPane().add(focussable, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, -1, -1));
@@ -220,11 +223,11 @@ public class formInscripcion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-       focussable.requestFocusInWindow();
+        focussable.requestFocusInWindow();
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
-        
+
     }//GEN-LAST:event_btnAddMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -265,18 +268,24 @@ public class formInscripcion extends javax.swing.JFrame {
             }
         });
     }
-    void changueTable(JTable from, JTable to){
+
+    void changueTable(JTable from, JTable to) {
         int row = from.getSelectedRow();
-        Object[] data = new Object[5];
-        for (int i = 0; i < 5; i++) {
-            data[i] = from.getValueAt(row, i);
+        if (row > -1) {
+            Object[] data = new Object[5];
+            for (int i = 0; i < 5; i++) {
+                data[i] = from.getValueAt(row, i);
+            }
+            DefaultTableModel fromModel, toModel;
+            fromModel = (DefaultTableModel) from.getModel();
+            toModel = (DefaultTableModel) to.getModel();
+            fromModel.removeRow(row);
+            toModel.addRow(data);
+        } else{
+            JOptionPane.showMessageDialog(null, "Seleccione un deportista");
         }
-        DefaultTableModel fromModel, toModel;
-        fromModel = (DefaultTableModel) from.getModel();
-        toModel = (DefaultTableModel) to.getModel();
-        fromModel.removeRow(row);
-        toModel.addRow(data);
     }
+
     void createColumns(JTable tabla) {
         tableModel = (DefaultTableModel) tabla.getModel();
         tableModel.addColumn("Nombres");
@@ -284,7 +293,11 @@ public class formInscripcion extends javax.swing.JFrame {
         tableModel.addColumn("Sexo");
         tableModel.addColumn("N° Documento");
         tableModel.addColumn("Categoría");
+        tabla.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tabla.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tabla.getColumnModel().getColumn(2).setPreferredWidth(10);
     }
+
     void filter(String query) {
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(tableModel);
         tabla.setRowSorter(tr);
@@ -299,14 +312,20 @@ public class formInscripcion extends javax.swing.JFrame {
             while (rs.next()) {
                 String nombres = rs.getString("nombres");
                 String apellidos = rs.getString("apellidos");
-                String sexo = rs.getString("sexo");
+                int sexo = rs.getInt("sexo");
+                String sex;
+                if (sexo == 1) {
+                    sex = "M";
+                } else {
+                    sex = "F";
+                }
                 String doc = rs.getString("n_documento");
                 String cat = ctrlCat.getCategoria(rs.getString("fecha_nacimiento"));
-                String[] row = {nombres,apellidos,doc,cat};
+                String[] row = {nombres, apellidos, sex, doc, cat};
                 tableModel.addRow(row);
             }
         } catch (Exception e) {
-            System.out.println("Error recorrer array vista: "+ e.getMessage());
+            System.out.println("Error recorrer array vista: " + e.getMessage());
         }
     }
 
@@ -316,7 +335,7 @@ public class formInscripcion extends javax.swing.JFrame {
             element.setText(placeholderText);
         }
     }
-    
+
     void unshowPlaceholder(JTextField element, String placeholderText) {
         String text = element.getText();
         if (text.equals(placeholderText)) {
@@ -324,22 +343,79 @@ public class formInscripcion extends javax.swing.JFrame {
             element.setForeground(Color.decode("#000000"));
         }
     }
-    void sendInscripcion(){
+
+    void sendInscripcion() {
         String raceName = txtCarrera.getText();
         String dt = txtDT.getText();
         String dtTel = txtTelDT.getText();
         String delegado = txtDelegado.getText();
         String delTel = txtTelDelegado.getText();
-        String[] raceData = {raceName,dt,dtTel,delegado,delTel};
-        DefaultTableModel model = (DefaultTableModel) tablaRacers.getModel();
-        int rows = model.getRowCount();
-        int cols = model.getColumnCount();
-        String[][] racers = new String[rows][cols];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                racers[i][j] = model.getValueAt(i, j).toString();
+        String alertMessage = "";
+        String camps = "";
+        int campCount = 0;
+        if (raceName.equals("")) {
+            campCount++;
+            camps += "Nombre de la Carrera";
+        }
+        if (dt.equals("")) {
+            if (campCount > 0) {
+                camps += ", Director Técnico";
+            } else {
+                camps += "Director Técnico";
+            }
+            campCount++;
+        }
+        if (dtTel.equals("")) {
+            if (campCount > 0) {
+                camps += ", Telefono Director Técnico";
+            } else {
+                camps += "Teléfono Director Técnico";
+            }
+            campCount++;
+        }
+        if (delegado.equals("")) {
+            if (campCount > 0) {
+                camps += ", Delegado";
+            } else {
+                camps += "Delegado";
+            }
+            campCount++;
+        }
+        if (delTel.equals("")) {
+            if (campCount > 0) {
+                camps += ", Teléfono Delegado";
+            } else {
+                camps += "Teléfono Delegado";
+            }
+            campCount++;
+        }
+        if (campCount > 0) {
+            if (campCount > 1) {
+                alertMessage = "Hay que llenar los campos: ";
+            } else {
+                alertMessage = "Hay que llenar el campo: ";
+            }
+            alertMessage += camps;
+            JOptionPane.showMessageDialog(null, alertMessage);
+        } else {
+            String[] raceData = {raceName, dt, dtTel, delegado, delTel};
+            DefaultTableModel model = (DefaultTableModel) tablaRacers.getModel();
+            int rows = model.getRowCount();
+            if (rows > 0) {
+                int cols = model.getColumnCount();
+                String[][] racers = new String[rows][cols];
+                for (int i = 0; i < rows; i++) {
+                    for (int j = 0; j < cols; j++) {
+                        racers[i][j] = model.getValueAt(i, j).toString();
+                    }
+                }
+                controllerInscripciones ctrl = new controllerInscripciones();
+                ctrl.generarInscripcion(raceData, racers);
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe inscribir almenos un deportista.");
             }
         }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
