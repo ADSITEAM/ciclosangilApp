@@ -141,14 +141,15 @@ public class formAdmin extends javax.swing.JFrame {
 
     private void btnEPS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEPS1ActionPerformed
         String EPS = JOptionPane.showInputDialog(null, "Ingrese la nueva EPS");
-        if (!(EPS == null)) {
+        if (!(EPS == null) || !EPS.equals("")) {
             modelEPS model = new modelEPS();
             model.save(EPS);
         }
     }//GEN-LAST:event_btnEPS1ActionPerformed
 
     private void btnNewUser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUser1ActionPerformed
-
+        formEditUser form = new formEditUser();
+        showForm(form);
     }//GEN-LAST:event_btnNewUser1ActionPerformed
 
     /**

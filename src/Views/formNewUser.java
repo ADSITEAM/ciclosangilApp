@@ -156,7 +156,7 @@ public class formNewUser extends javax.swing.JFrame {
         jPanel1.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 250, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 440));
-        getContentPane().add(txtFocus, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 50, -1));
+        getContentPane().add(txtFocus, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 50, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

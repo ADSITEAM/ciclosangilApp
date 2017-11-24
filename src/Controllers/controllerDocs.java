@@ -6,6 +6,7 @@
 package Controllers;
 
 import Models.modelCiclistas;
+import Views.formMessage;
 import java.io.FileOutputStream;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
@@ -23,6 +24,9 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
  */
 public class controllerDocs {
  modelCiclistas model = new modelCiclistas();
+    formMessage dialog = new formMessage();
+    boolean error = true;
+    String text = "";
     public void generateDoc(String id) {
        
         ResultSet data = model.selectDoc(id);
@@ -116,7 +120,6 @@ public class controllerDocs {
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("journ")) {
-                            System.out.println("Is journey");
                             text = text.replace("journ", journey);
                             r.setText(text, 0);
                         }
@@ -151,13 +154,14 @@ public class controllerDocs {
                     }
                 }
             }
-            JOptionPane.showMessageDialog(null, "Documento Creado Correctamente");
+            System.out.println(""+error);
+            error = false;
+            text = "Documento Creado Correctamente";
             doc.write(new FileOutputStream("docs/ligaDocs/"+names+ ".docx"));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error inesperado al crear documento");
-            System.out.println("Error al generar documento");
+            text = "Error inesperado al crear documento";
             System.out.println(e.getMessage());
         }
-
+        dialog.showModal(error, text);
     }
 }

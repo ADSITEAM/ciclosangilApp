@@ -6,6 +6,7 @@
 package Models;
 
 import Controllers.controllerDocs;
+import Views.formMessage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,9 +18,12 @@ import javax.swing.JOptionPane;
  * @author Aprendiz
  */
 public class modelCiclistas {
+    formMessage modal = new formMessage();
+    boolean error = true;
+    String text = "";
+    Conexion obj = new Conexion();
+    Connection cnx = obj.getConexBD();
     String getId(String doc){
-        Conexion obj = new Conexion();
-        Connection cnx = obj.getConexBD();
         String id ="";
         String query = "select id from ciclistas where n_documento='"+doc+"'";
         try {
@@ -36,8 +40,6 @@ public class modelCiclistas {
         return id;
     }
     public void save(Object[] data){
-        Conexion obj = new Conexion();
-        Connection cnx = obj.getConexBD();
         String query = "insert into ciclistas (n_documento, tipo_documento, nombres,apellidos,fecha_nacimiento,lugar_nacimiento,colegio,jornada,rh,eps,direccion,email,telefono,nombre_madre,nombre_padre,modalidad,sexo) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
@@ -45,20 +47,20 @@ public class modelCiclistas {
                 statement.setString(i+1, data[i].toString());
             }
             int count = statement.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Deportista "+data[2].toString()+" "+data[3].toString()+" inscrito correctamente.");
+            error = false;
+            text = "<html><center>Deportista: "+data[2].toString()+" "+data[3].toString()+"<br>inscrito correctamente.</center></html>";
             controllerDocs docs = new controllerDocs();
             String doc = data[0].toString();
             docs.generateDoc(getId(doc));
         } catch (Exception e) {
             System.out.println("Error en save ciclistas:");
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "Error al inscribir el deportista.");
+           text = "Error al inscribir el deportista.";
         }
+        modal.showModal(error,text);
     }
 
     public ResultSet selectDoc(String id){
-        Conexion obj = new Conexion();
-        Connection cnx = obj.getConexBD();
         String query = "SELECT ciclistas.*, eps.nombre as nombreEPS, rh.nombre as nombreRH FROM ((ciclistas INNER JOIN eps ON eps.id = ciclistas.eps) INNER JOIN rh ON rh.id = ciclistas.rh) where ciclistas.id = '"+id+"'";
         try {
             Statement st = cnx.createStatement();
@@ -70,8 +72,6 @@ public class modelCiclistas {
         }
     }
     public void update(Object[] data){
-        Conexion obj = new Conexion();
-        Connection cnx = obj.getConexBD();
         String id = data[0].toString();
         String doc = data[1].toString();
         String type = data[2].toString();
@@ -87,31 +87,30 @@ public class modelCiclistas {
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Actualización Correcta");
+            text = "Actualización Correcta";
+            error = false;
             controllerDocs docs = new controllerDocs();
             docs.generateDoc(id);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al actualizar");
+            text = "Error al actualizar";
             System.out.println("Error en update " + e.getMessage());
         }
+        modal.showModal(error, text);
     }
     public void delete(String id){
-        Conexion obj = new Conexion();
-        Connection cnx = obj.getConexBD();
         String query = "delete from ciclistas where id = '"+id+"'";
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Ciclista retirado correctamente");
+            error = false;
+            text = "Ciclista retirado correctamente";
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al reitrar ciclista");
+            text = "Error al reitrar ciclista";
         }
         
-        
+        modal.showModal(error, text);
     }
     public ResultSet fillTable(){
-        Conexion obj = new Conexion();
-        Connection cnx = obj.getConexBD();
         String query = "select n_documento, nombres, apellidos, sexo, fecha_nacimiento from ciclistas";
         try {
             Statement st = cnx.createStatement();
@@ -124,8 +123,6 @@ public class modelCiclistas {
     }
     
     public ResultSet selectEdit(String doc){
-        Conexion obj = new Conexion();
-        Connection cnx = obj.getConexBD();
         String query = "select * from ciclistas where n_documento='"+doc+"'";
         try {
             Statement st = cnx.createStatement();

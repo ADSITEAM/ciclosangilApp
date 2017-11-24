@@ -36,6 +36,18 @@ public class modelUsers {
             JOptionPane.showMessageDialog(null, "Error al registrar usuarios.");
         }
     }
+    public void update(String[] data) {
+        String query = "update usuarios set username='"+data[0]+"', password='"+data[1]+"' where username='"+data[2]+"'";
+        try {
+            PreparedStatement statement = cnx.prepareStatement(query);
+            statement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Usuario " + data[0] + " actualizado correctamente.");
+        } catch (Exception e) {
+            System.out.println("Error en save users:");
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al registrar usuarios.");
+        }
+    }
     public boolean validateUser(String user){
         boolean state = false;
         int count = 0;
@@ -54,5 +66,16 @@ public class modelUsers {
             System.out.println(e.getMessage());
         }
         return state;
+    }
+    public ResultSet selectUsers(){
+        String query = "select username from usuarios where rol='0'";
+        try {
+            Statement st = cnx.createStatement();
+            return st.executeQuery(query);
+        } catch (Exception e) {
+            System.out.println("Error en select from delete:");
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }
