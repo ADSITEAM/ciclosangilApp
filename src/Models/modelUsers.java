@@ -6,6 +6,7 @@
 package Models;
 
 import Controllers.controllerDocs;
+import Views.formMessage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,34 +20,59 @@ import javax.swing.JOptionPane;
 public class modelUsers {
 
     Conexion obj = new Conexion();
+    formMessage modal = new formMessage();
     Connection cnx = obj.getConexBD();
 
     public void save(Object[] data) {
+        String text ="";
+        boolean error = true;
         String query = "insert into usuarios values (?,?,?)";
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
             for (int i = 0; i < data.length; i++) {
                 statement.setString(i + 1, data[i].toString());
             }
-            int count = statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Usuario " + data[0].toString() + " creado correctamente.");
+            statement.executeUpdate();
+            error = false;
+            text = "<html><center>Usuario " + data[0].toString() + "<br>creado correctamente.</center></html>";
         } catch (Exception e) {
             System.out.println("Error en save users:");
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "Error al registrar usuarios.");
+            text = "Error al registrar usuarios.";
         }
+        modal.showModal(error, text);
     }
     public void update(String[] data) {
+        String text ="";
+        boolean error = true;
         String query = "update usuarios set username='"+data[0]+"', password='"+data[1]+"' where username='"+data[2]+"'";
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Usuario " + data[0] + " actualizado correctamente.");
+            error = false;
+            text = "<html><center>Usuario " + data[0] + "<br>actualizado correctamente.</center></html>";
         } catch (Exception e) {
             System.out.println("Error en save users:");
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "Error al registrar usuarios.");
+            text = "Error al registrar usuarios.";
         }
+        modal.showModal(error, text);
+    }
+    public void delete(String user){
+        boolean error = true;
+        String text ="";
+        String query = "delete from usuarios where username='"+user+"'";
+        try {
+            PreparedStatement statement = cnx.prepareStatement(query);
+            statement.executeUpdate();
+            error = false;
+            text = "<html><center>Usuaraio " + user + "<br>eliminado correctamente</center></html>";
+        } catch (Exception e) {
+            System.out.println("Error en delete user");
+            System.out.println(e.getMessage());
+            text = "Error al eliminar usuario "+ user;
+        }
+        modal.showModal(error, text);
     }
     public boolean validateUser(String user){
         boolean state = false;

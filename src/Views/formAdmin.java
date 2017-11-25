@@ -5,6 +5,7 @@
  */
 package Views;
 
+import Controllers.controllerLogin;
 import Models.modelEPS;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -20,6 +21,8 @@ public class formAdmin extends javax.swing.JFrame {
      */
     public formAdmin() {
         initComponents();
+        showUser();
+        this.disable();
     }
 
     /**
@@ -140,11 +143,8 @@ public class formAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewUserActionPerformed
 
     private void btnEPS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEPS1ActionPerformed
-        String EPS = JOptionPane.showInputDialog(null, "Ingrese la nueva EPS");
-        if (!(EPS == null) || !EPS.equals("")) {
-            modelEPS model = new modelEPS();
-            model.save(EPS);
-        }
+        newEPS eps = new newEPS();
+        eps.setVisible(true);
     }//GEN-LAST:event_btnEPS1ActionPerformed
 
     private void btnNewUser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUser1ActionPerformed
@@ -186,11 +186,20 @@ public class formAdmin extends javax.swing.JFrame {
             }
         });
     }
-
+    void showUser(){
+        controllerLogin ctrl = new controllerLogin();
+        String user = ctrl.getUser();
+        if (user.equals("")) {
+            formLogin form = new formLogin();
+            showForm(form);
+        } else{
+            lbUser.setText(user);
+        }
+    }
     void showForm(JFrame form) {
-        this.dispose();
         form.setVisible(true);
         form.setLocationRelativeTo(null);
+        this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

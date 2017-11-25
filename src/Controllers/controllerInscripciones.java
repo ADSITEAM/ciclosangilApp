@@ -5,16 +5,14 @@
  */
 package Controllers;
 
-import java.io.File;
+import Views.formMessage;
 import java.io.FileOutputStream;
 import java.util.List;
-import javax.swing.JOptionPane;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
-import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 /**
@@ -22,7 +20,9 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
  * @author user
  */
 public class controllerInscripciones {
-
+    formMessage modal = new formMessage();
+    String txt = "";
+    boolean error = true;
     public void generarInscripcion(String[] raceData, String[][] racers) {
         try {
             XWPFDocument doc = new XWPFDocument(OPCPackage.open("docs/planilla2.docx"));
@@ -76,13 +76,14 @@ public class controllerInscripciones {
                     row.getCell(7).setText(racers[i][3]);
                 }
             }
-
-            JOptionPane.showMessageDialog(null, "Documento Creado Correctamente");
+            error = false;
+            txt = "Documento creado correctamente.";
             doc.write(new FileOutputStream("docs/inscripciones/"+raceData[0]+".docx"));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error inesperado al crear documento");
+            txt = "Error inesperado al crear documento";
             System.out.println("Error al generar documento");
             System.out.println(e.getMessage());
         }
+        modal.showModal(error, txt);
     }
 }

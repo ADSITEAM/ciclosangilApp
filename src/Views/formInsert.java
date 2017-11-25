@@ -6,11 +6,9 @@
 package Views;
 
 import Controllers.controllerCiclistas;
-import Controllers.controllerDocs;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**

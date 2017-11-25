@@ -21,7 +21,7 @@ public class formMain extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         showUser();
-        
+        jPanel2.requestFocusInWindow();
     }
 
     /**
@@ -49,7 +49,9 @@ public class formMain extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnIscripCarreras.setBackground(new java.awt.Color(0, 0, 51));
         btnIscripCarreras.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
+        btnIscripCarreras.setForeground(new java.awt.Color(255, 255, 255));
         btnIscripCarreras.setText("Inscripciones a Carreras");
         btnIscripCarreras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,7 +60,9 @@ public class formMain extends javax.swing.JFrame {
         });
         jPanel2.add(btnIscripCarreras, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 240, 30));
 
+        btnEliminar.setBackground(new java.awt.Color(0, 0, 51));
         btnEliminar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Actualizar Informacion");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,7 +71,9 @@ public class formMain extends javax.swing.JFrame {
         });
         jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 240, 30));
 
+        btnListar.setBackground(new java.awt.Color(0, 0, 51));
         btnListar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
+        btnListar.setForeground(new java.awt.Color(255, 255, 255));
         btnListar.setText("Listar Deportistas");
         btnListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +82,9 @@ public class formMain extends javax.swing.JFrame {
         });
         jPanel2.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 240, 30));
 
+        btnInsertar.setBackground(new java.awt.Color(0, 0, 51));
         btnInsertar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
+        btnInsertar.setForeground(new java.awt.Color(255, 255, 255));
         btnInsertar.setText("Nuevo Deportista");
         btnInsertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,7 +107,9 @@ public class formMain extends javax.swing.JFrame {
         lbUser.setText(" narias");
         jPanel2.add(lbUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 120, -1));
 
+        btnSalir.setBackground(new java.awt.Color(102, 0, 0));
         btnSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

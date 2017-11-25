@@ -14,7 +14,7 @@ import java.sql.Statement;
  * @author Aprendiz
  */
 public class modelLogin {
-    static String username;
+    static String username = "";
     Conexion obj = new Conexion();
     Connection cnx = obj.getConexBD();
 

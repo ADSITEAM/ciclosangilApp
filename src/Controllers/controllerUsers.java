@@ -30,4 +30,7 @@ public class controllerUsers {
     public void update(String[] data){
         model.update(data);
     }
+    public void delete(String user){
+        model.delete(user);
+    }
 }

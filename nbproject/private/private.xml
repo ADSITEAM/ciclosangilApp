@@ -4,11 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/user/Desktop/ciclosangilApp/src/Models/modelUsers.java</file>
+            <file>file:/C:/Users/user/Desktop/ciclosangilApp/src/Views/formInscripcion.java</file>
             <file>file:/C:/Users/user/Desktop/ciclosangilApp/src/Views/formInsert.java</file>
+            <file>file:/C:/Users/user/Desktop/ciclosangilApp/src/Controllers/controllerInscripciones.java</file>
+            <file>file:/C:/Users/user/Desktop/ciclosangilApp/src/Views/formEdit.java</file>
             <file>file:/C:/Users/user/Desktop/ciclosangilApp/src/Views/formEditUser.java</file>
             <file>file:/C:/Users/user/Desktop/ciclosangilApp/src/Views/formAdmin.java</file>
-            <file>file:/C:/Users/user/Desktop/ciclosangilApp/src/Views/formNewUser.java</file>
+            <file>file:/C:/Users/user/Desktop/ciclosangilApp/src/Models/modelCiclistas.java</file>
+            <file>file:/C:/Users/user/Desktop/ciclosangilApp/src/Views/formMain.java</file>
             <file>file:/C:/Users/user/Desktop/ciclosangilApp/src/Controllers/controllerUsers.java</file>
+            <file>file:/C:/Users/user/Desktop/ciclosangilApp/src/Models/modelEPS.java</file>
         </group>
     </open-files>
 </project-private>

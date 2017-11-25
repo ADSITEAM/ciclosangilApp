@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 public class formNewUser extends javax.swing.JFrame {
     String placeholderUser = "Nombre de Usuario.";
     String placeholderPass = "Contraseña.";
+    formMessage modal = new formMessage();
     /**
      * Creates new form formUsers
      */
@@ -253,10 +254,10 @@ public class formNewUser extends javax.swing.JFrame {
                 txtContraseña.setText("");
                 cbxRol.setSelectedIndex(0);
             }else{
-                JOptionPane.showMessageDialog(null, "El usuario ya está registrado");
+                modal.showModal(true, "El usuario ya está registrado");
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Debe llenar ambos campos");
+            modal.showModal(true, "Debe llenar ambos campos");
         }
         
     }
