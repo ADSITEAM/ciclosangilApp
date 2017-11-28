@@ -9,6 +9,7 @@ import Controllers.controllerCategorias;
 import Controllers.controllerCiclistas;
 import java.awt.Color;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.*;
@@ -581,9 +582,14 @@ public class formEdit extends javax.swing.JFrame {
     void delete() {
         int row = tabla.getSelectedRow();
         if (row > -1) {
-            controllerCiclistas ctrl = new controllerCiclistas();
-            ctrl.delete(id);
-            updateRows();
+            String name = tabla.getValueAt(row, 0).toString();
+            String lastName = tabla.getValueAt(row, 1).toString();
+            int result = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea retirar al ciclista " + name + " " + lastName + "?");
+            if (result == 0) {
+                controllerCiclistas ctrl = new controllerCiclistas();
+                ctrl.changeState(id, 0);
+                updateRows();
+            }
         } else {
             modal.showModal(true, "Por favor seleccione un deportista");
         }

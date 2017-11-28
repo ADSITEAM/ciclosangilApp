@@ -203,6 +203,7 @@ public class formInscripcion extends javax.swing.JFrame {
         });
         jPanel1.add(txtTelDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 100, 140, 30));
 
+        jButton3.setBackground(new java.awt.Color(0, 51, 102));
         jButton3.setText("Generar Inscripción");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,6 +212,7 @@ public class formInscripcion extends javax.swing.JFrame {
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 493, 140, 30));
 
+        btnVolver.setBackground(new java.awt.Color(102, 102, 0));
         btnVolver.setText("Menú Principal ");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

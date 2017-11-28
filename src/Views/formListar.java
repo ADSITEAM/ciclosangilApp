@@ -29,11 +29,10 @@ public class formListar extends javax.swing.JFrame {
      */
     public formListar() {
         initComponents();
-        allPlaceholders();
         txtSearch1.requestFocusInWindow();
+        showPlaceholder(txtSearch, "Ingrese el nombre o documento del deportista...");
         createColumns();
         fillTable();
-        getEPS();
     }
 
     /**
@@ -53,30 +52,56 @@ public class formListar extends javax.swing.JFrame {
         txtSearch = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        txtColegio = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        txtNumeroDoc = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtNombres = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        txtTelefono = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        cbxJornada = new javax.swing.JComboBox<>();
-        cbxTipo = new javax.swing.JComboBox<>();
-        txtApellidos = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         btnBack = new javax.swing.JButton();
-        cbxEPS = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
-        txtInscriptionDate = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        lbInscriptionDay = new javax.swing.JLabel();
+        lbModality = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel16 = new javax.swing.JLabel();
+        lbBornDay = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel17 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        lbBornPlace = new javax.swing.JLabel();
+        lbCategory = new javax.swing.JLabel();
+        lbNames = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jSeparator9 = new javax.swing.JSeparator();
+        lbFather = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jSeparator10 = new javax.swing.JSeparator();
+        lbMother = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jSeparator12 = new javax.swing.JSeparator();
+        jLabel22 = new javax.swing.JLabel();
+        lbRH = new javax.swing.JLabel();
+        jSeparator14 = new javax.swing.JSeparator();
+        jLabel23 = new javax.swing.JLabel();
+        jSeparator15 = new javax.swing.JSeparator();
+        lbEPS = new javax.swing.JLabel();
+        jSeparator13 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jSeparator16 = new javax.swing.JSeparator();
+        lbTel = new javax.swing.JLabel();
+        lbDir = new javax.swing.JLabel();
+        jSeparator17 = new javax.swing.JSeparator();
+        jLabel26 = new javax.swing.JLabel();
+        lbEmail = new javax.swing.JLabel();
+        jSeparator18 = new javax.swing.JSeparator();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        lbSchool = new javax.swing.JLabel();
+        jSeparator11 = new javax.swing.JSeparator();
+        lbDoc = new javax.swing.JLabel();
         txtSearch1 = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -137,134 +162,19 @@ public class formListar extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tabla);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 550, 330));
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Contacto");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, -1, -1));
-
-        txtEmail.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtEmailFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtEmailFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, 200, -1));
-
-        txtColegio.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtColegio.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtColegioFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtColegioFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 360, 200, -1));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("EPS");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 480, 40, -1));
-
-        txtNumeroDoc.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtNumeroDoc.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNumeroDocFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNumeroDocFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtNumeroDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 320, 200, -1));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Documeto");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Nombres");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 170, -1, -1));
-
-        txtNombres.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtNombres.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNombresFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNombresFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 170, 300, -1));
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setText("Apellidos");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, -1, -1));
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel13.setText("Dirección");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 440, -1, -1));
-
-        txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTelefonoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtTelefonoFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 400, 110, -1));
-
-        txtDireccion.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDireccionFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDireccionFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 440, 320, -1));
-
-        cbxJornada.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        cbxJornada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Mañana", "Tarde", "Noche" }));
-        cbxJornada.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(cbxJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 360, 110, 24));
-
-        cbxTipo.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "T.I.", "C.C.", "C.E." }));
-        cbxTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 320, 110, 24));
-
-        txtApellidos.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtApellidos.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtApellidosFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtApellidosFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 210, 300, -1));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Estuduios");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, -1, -1));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 550, 370));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 10, 430));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 10, 470));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logox100px.png"))); // NOI18N
         jLabel3.setText("  ");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 25)); // NOI18N
-        jLabel4.setText("Sección Actualizar Información");
+        jLabel4.setText("Sección Listar Deportistas");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 47, -1, 50));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1140, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1250, -1));
 
         btnBack.setBackground(new java.awt.Color(102, 102, 0));
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -275,27 +185,164 @@ public class formListar extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(979, 70, 120, -1));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 60, 120, -1));
 
-        cbxEPS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
-        jPanel1.add(cbxEPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 480, 320, -1));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Modalidad:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 290, 100, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 160, 10));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("Fecha Inscripción");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 250, -1, -1));
+        lbInscriptionDay.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbInscriptionDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lbInscriptionDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 290, 160, -1));
 
-        txtInscriptionDate.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtInscriptionDate.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtInscriptionDateFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtInscriptionDateFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtInscriptionDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, 300, -1));
+        lbModality.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbModality.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lbModality, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 290, 160, -1));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 310, 160, 10));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 570));
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel16.setText("Fecha Nac:");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 320, -1, -1));
+
+        lbBornDay.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbBornDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lbBornDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 320, 160, -1));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 340, 160, 10));
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("Lugar Nac:");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 320, 100, -1));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 340, 160, 10));
+
+        lbBornPlace.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbBornPlace.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lbBornPlace, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 320, 160, -1));
+
+        lbCategory.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbCategory.setForeground(new java.awt.Color(0, 0, 102));
+        lbCategory.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbCategory.setText("Categoría");
+        jPanel1.add(lbCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 160, 180, -1));
+
+        lbNames.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbNames.setForeground(new java.awt.Color(0, 0, 102));
+        lbNames.setText("Nombres y Apellidos...");
+        jPanel1.add(lbNames, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 160, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel2.setText("Información Personal");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, -1, 60));
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 600, 10));
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel18.setText("Fecha Inscripción:");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 290, -1, -1));
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel19.setText("Documento:");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 260, -1, -1));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 280, 430, 10));
+
+        lbFather.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbFather.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lbFather, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 410, 430, -1));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel20.setText("Nombre Padre:");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, -1, -1));
+        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 430, 430, 10));
+
+        lbMother.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbMother.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lbMother, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 440, 430, -1));
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel21.setText("Nombre Madre:");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, -1, -1));
+        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 460, 430, 10));
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel22.setText("Tipo de Sangre:");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 350, -1, -1));
+
+        lbRH.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbRH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lbRH, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 350, 160, -1));
+        jPanel1.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 370, 160, 10));
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Dirección");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 540, 100, -1));
+        jPanel1.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 370, 160, 10));
+
+        lbEPS.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbEPS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lbEPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 350, 160, -1));
+        jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 480, 600, 10));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel5.setText("Información de Contácto");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 480, -1, 60));
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("EPS");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 350, 110, -1));
+        jPanel1.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 560, 190, 10));
+
+        lbTel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbTel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lbTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 540, 190, -1));
+
+        lbDir.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbDir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lbDir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 540, 190, -1));
+        jPanel1.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 560, 190, 10));
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel26.setText("E-mail:");
+        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 570, 130, -1));
+
+        lbEmail.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lbEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 570, 480, -1));
+        jPanel1.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 590, 480, 10));
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel28.setText("Teléfono:");
+        jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 540, 130, -1));
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel25.setText("Estudios:");
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 380, -1, -1));
+
+        lbSchool.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbSchool.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lbSchool, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 380, 430, -1));
+        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, 430, 10));
+
+        lbDoc.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbDoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lbDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 260, 430, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 610));
 
         txtSearch1.setToolTipText("Ingrese Tarjeta de Identidad");
         txtSearch1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -321,62 +368,6 @@ public class formListar extends javax.swing.JFrame {
         unshowPlaceholder(txtSearch, "Ingrese el nombre o documento del deportista...");
     }//GEN-LAST:event_txtSearchFocusGained
 
-    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
-        unshowPlaceholder(txtEmail, "Correo Electrónico");
-    }//GEN-LAST:event_txtEmailFocusGained
-
-    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
-        showPlaceholder(txtEmail, "Correo Electrónico");
-    }//GEN-LAST:event_txtEmailFocusLost
-
-    private void txtColegioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtColegioFocusGained
-        unshowPlaceholder(txtColegio, "Institución Educativa");
-    }//GEN-LAST:event_txtColegioFocusGained
-
-    private void txtColegioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtColegioFocusLost
-        showPlaceholder(txtColegio, "Institución Educativa");
-    }//GEN-LAST:event_txtColegioFocusLost
-
-    private void txtNumeroDocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroDocFocusGained
-        unshowPlaceholder(txtNumeroDoc, "N° de Documento");
-    }//GEN-LAST:event_txtNumeroDocFocusGained
-
-    private void txtNumeroDocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroDocFocusLost
-        showPlaceholder(txtNumeroDoc, "N° de Documento");
-    }//GEN-LAST:event_txtNumeroDocFocusLost
-
-    private void txtNombresFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombresFocusGained
-        unshowPlaceholder(txtNombres, "Nombres");
-    }//GEN-LAST:event_txtNombresFocusGained
-
-    private void txtNombresFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombresFocusLost
-        showPlaceholder(txtNombres, "Nombres");
-    }//GEN-LAST:event_txtNombresFocusLost
-
-    private void txtTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusGained
-        unshowPlaceholder(txtTelefono, "Teléfono");
-    }//GEN-LAST:event_txtTelefonoFocusGained
-
-    private void txtTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusLost
-        showPlaceholder(txtTelefono, "Teléfono");
-    }//GEN-LAST:event_txtTelefonoFocusLost
-
-    private void txtDireccionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionFocusGained
-        unshowPlaceholder(txtDireccion, "Dirección de Residencia");
-    }//GEN-LAST:event_txtDireccionFocusGained
-
-    private void txtDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionFocusLost
-        showPlaceholder(txtDireccion, "Dirección de Residencia");
-    }//GEN-LAST:event_txtDireccionFocusLost
-
-    private void txtApellidosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidosFocusGained
-        unshowPlaceholder(txtApellidos, "Apellidos");
-    }//GEN-LAST:event_txtApellidosFocusGained
-
-    private void txtApellidosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidosFocusLost
-        showPlaceholder(txtApellidos, "Apellidos");
-    }//GEN-LAST:event_txtApellidosFocusLost
-
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         formMain form = new formMain();
         this.dispose();
@@ -387,14 +378,6 @@ public class formListar extends javax.swing.JFrame {
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
         setData();
     }//GEN-LAST:event_tablaMouseClicked
-
-    private void txtInscriptionDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtInscriptionDateFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInscriptionDateFocusGained
-
-    private void txtInscriptionDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtInscriptionDateFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInscriptionDateFocusLost
 
     /**
      * @param args the command line arguments
@@ -433,20 +416,6 @@ public class formListar extends javax.swing.JFrame {
             }
         });
     }
-
-    void getEPS() {
-        controllerCiclistas ctrl = new controllerCiclistas();
-        ctrl.getEps();
-        ResultSet data = ctrl.getEps();
-        try {
-            while (data.next()) {
-                cbxEPS.addItem(data.getString("nombre"));
-            }
-        } catch (Exception e) {
-            System.out.println("Error loading eps");
-        }
-    }
-
     void createColumns() {
         tableModel = (DefaultTableModel) tabla.getModel();
         tableModel.addColumn("Nombre");
@@ -502,49 +471,56 @@ public class formListar extends javax.swing.JFrame {
         }
     }
 
-    void allPlaceholders() {
-        txtSearch1.requestFocusInWindow();
-        showPlaceholder(txtSearch, "Ingrese el nombre o documento del deportista...");
-        showPlaceholder(txtNombres, "Nombres");
-        showPlaceholder(txtApellidos, "Apellidos");
-        showPlaceholder(txtNumeroDoc, "N° de Documento");
-        showPlaceholder(txtColegio, "Institución Educativa");
-        showPlaceholder(txtDireccion, "Dirección de Residencia");
-        showPlaceholder(txtEmail, "Correo Electrónico");
-        showPlaceholder(txtTelefono, "Teléfono");
-    }
-
-    void unshowAllPlaceholders() {
-        unshowPlaceholder(txtNombres, "Nombres");
-        unshowPlaceholder(txtApellidos, "Apellidos");
-        unshowPlaceholder(txtNumeroDoc, "N° de Documento");
-        unshowPlaceholder(txtColegio, "Institución Educativa");
-        unshowPlaceholder(txtDireccion, "Dirección de Residencia");
-        unshowPlaceholder(txtEmail, "Correo Electrónico");
-        unshowPlaceholder(txtTelefono, "Teléfono");
-    }
-
     void setData() {
         int row = tabla.getSelectedRow();
         String doc = tabla.getValueAt(row, 2).toString();
         controllerCiclistas ctrl = new controllerCiclistas();
-        ResultSet data = ctrl.selectEdit(doc);
+        ResultSet data = ctrl.selectListar(doc);
 
         try {
-            unshowAllPlaceholders();
             while (data.next()) {
+                String type = "";
+                controllerCategorias cats = new controllerCategorias();
+                String cat = cats.getCategoria(data.getString("fecha_nacimiento"));
+                switch (data.getInt("tipo_documento")){
+                    case 0:
+                        type = "T.I.";
+                        break;
+                    case 1:
+                        type = "C.C.";
+                        break;
+                    default:
+                        type = "C.E.";
+                        break;
+                }
+                switch (data.getInt("jornada")){
+                    case 0:
+                        lbSchool.setText("No estudia");
+                        break;
+                    case 1:
+                        lbSchool.setText(data.getString("colegio")+ " - Mañana");
+                        break;
+                    case 2:
+                        lbSchool.setText(data.getString("colegio")+ " - Tarde");
+                        break;
+                    default:
+                        lbSchool.setText(data.getString("colegio")+ " - Noche");
+                        break;
+                }
                 id = data.getString("id");
-                String eps = ctrl.getEps(data.getString("eps"));
-                txtNombres.setText(data.getString("nombres"));
-                txtApellidos.setText(data.getString("apellidos"));
-                txtColegio.setText(data.getString("colegio"));
-                txtNumeroDoc.setText(data.getString("n_documento"));
-                cbxEPS.setSelectedItem(eps);
-                txtDireccion.setText(data.getString("direccion"));
-                txtEmail.setText(data.getString("email"));
-                txtTelefono.setText(data.getString("telefono"));
-                cbxTipo.setSelectedIndex(data.getInt("tipo_documento"));
-                cbxJornada.setSelectedIndex(data.getInt("jornada"));
+                lbEPS.setText(data.getString("epsName"));
+                lbRH.setText(data.getString("rhName"));
+                lbBornDay.setText(data.getString("fecha_nacimiento").replace("-","/"));
+                lbInscriptionDay.setText(data.getString("fecha_inscripcion").replace("-","/"));
+                lbFather.setText(data.getString("nombre_padre"));
+                lbMother.setText(data.getString("nombre_madre"));
+                lbModality.setText(data.getString("modalidad"));
+                lbNames.setText(data.getString("nombres") + " " + data.getString("apellidos"));
+                lbDoc.setText(type + " " +data.getString("n_documento"));
+                lbDir.setText(data.getString("direccion"));
+                lbEmail.setText(data.getString("email"));
+                lbTel.setText(data.getString("telefono"));
+                lbCategory.setText(cat);
             }
         } catch (Exception e) {
             System.out.println("Error show data form edit " + e.getMessage());
@@ -552,73 +528,65 @@ public class formListar extends javax.swing.JFrame {
 
     }
 
-    void update() {
-        int row = tabla.getSelectedRow();
-        if (row > -1) {
-            controllerCiclistas ctrl = new controllerCiclistas();
-            String doc = txtNumeroDoc.getText();
-            int type = cbxTipo.getSelectedIndex();
-            String col = txtColegio.getText();
-            String mail = txtEmail.getText();
-            String nombres = txtNombres.getText();
-            String apellidos = txtApellidos.getText();
-            String tel = txtTelefono.getText();
-            int eps = ctrl.getID(cbxEPS.getSelectedItem().toString(), "eps");
-            int jor = cbxJornada.getSelectedIndex();
-            String dir = txtDireccion.getText();
-            Object[] data = {id, doc, type, nombres, apellidos, col, jor, mail, tel, dir, eps};
-            ctrl.update(data);
-            updateRows();
-        } else {
-            modal.showModal(true, "Por favor seleccione un deportista");
-        }
-
-    }
-
-    void delete() {
-        int row = tabla.getSelectedRow();
-        if (row > -1) {
-            controllerCiclistas ctrl = new controllerCiclistas();
-            ctrl.delete(id);
-            updateRows();
-        } else {
-            modal.showModal(true, "Por favor seleccione un deportista");
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JComboBox<String> cbxEPS;
-    private javax.swing.JComboBox<String> cbxJornada;
-    private javax.swing.JComboBox<String> cbxTipo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
+    private javax.swing.JSeparator jSeparator15;
+    private javax.swing.JSeparator jSeparator16;
+    private javax.swing.JSeparator jSeparator17;
+    private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbBornDay;
+    private javax.swing.JLabel lbBornPlace;
+    private javax.swing.JLabel lbCategory;
+    private javax.swing.JLabel lbDir;
+    private javax.swing.JLabel lbDoc;
+    private javax.swing.JLabel lbEPS;
+    private javax.swing.JLabel lbEmail;
+    private javax.swing.JLabel lbFather;
+    private javax.swing.JLabel lbInscriptionDay;
+    private javax.swing.JLabel lbModality;
+    private javax.swing.JLabel lbMother;
+    private javax.swing.JLabel lbNames;
+    private javax.swing.JLabel lbRH;
+    private javax.swing.JLabel lbSchool;
+    private javax.swing.JLabel lbTel;
     private javax.swing.JTable tabla;
-    private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtColegio;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtInscriptionDate;
-    private javax.swing.JTextField txtNombres;
-    private javax.swing.JTextField txtNumeroDoc;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSearch1;
-    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

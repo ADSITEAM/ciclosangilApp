@@ -24,21 +24,32 @@ public class controllerCiclistas {
     public boolean save(Object[] data) {
          return model.save(data);
     }
-
+    public String getID(String doc){
+        return model.getId(doc);
+    }
     public ResultSet fillTable() {
         return model.fillTable();
+    }
+    public ResultSet fillTableDeleted() {
+        return model.fillTableDeleted();
     }
 
     public ResultSet selectEdit(String doc) {
         return model.selectEdit(doc);
+    }
+    public ResultSet selectListar(String doc) {
+        return model.selectListar(doc);
     }
 
     public void update(Object[] data) {
         model.update(data);
     }
 
-    public void delete(String id) {
-        model.delete(id);
+    public void changeState(String id, int State) {
+        model.changeState(id, State);
+    }
+    public void totalDelete(String id) {
+        model.totalDelete(id);
     }
 
     public ResultSet getEps() {

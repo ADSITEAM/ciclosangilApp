@@ -42,7 +42,8 @@ public class formAdmin extends javax.swing.JFrame {
         btnEPS = new javax.swing.JButton();
         btnNewUser = new javax.swing.JButton();
         btnEPS1 = new javax.swing.JButton();
-        btnNewUser1 = new javax.swing.JButton();
+        btnRetiredCyclist = new javax.swing.JButton();
+        btnNewUser2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -110,18 +111,29 @@ public class formAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(btnEPS1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 220, 30));
 
-        btnNewUser1.setBackground(new java.awt.Color(0, 0, 51));
-        btnNewUser1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnNewUser1.setForeground(new java.awt.Color(255, 255, 255));
-        btnNewUser1.setText("Editar Usuario");
-        btnNewUser1.addActionListener(new java.awt.event.ActionListener() {
+        btnRetiredCyclist.setBackground(new java.awt.Color(0, 51, 51));
+        btnRetiredCyclist.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnRetiredCyclist.setForeground(new java.awt.Color(255, 255, 255));
+        btnRetiredCyclist.setText("Ciclistas Retirados");
+        btnRetiredCyclist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewUser1ActionPerformed(evt);
+                btnRetiredCyclistActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNewUser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 220, 30));
+        jPanel1.add(btnRetiredCyclist, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 220, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
+        btnNewUser2.setBackground(new java.awt.Color(0, 0, 51));
+        btnNewUser2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnNewUser2.setForeground(new java.awt.Color(255, 255, 255));
+        btnNewUser2.setText("Editar Usuario");
+        btnNewUser2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewUser2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNewUser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 220, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -146,10 +158,14 @@ public class formAdmin extends javax.swing.JFrame {
         eps.setVisible(true);
     }//GEN-LAST:event_btnEPS1ActionPerformed
 
-    private void btnNewUser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUser1ActionPerformed
-        formEditUser form = new formEditUser();
+    private void btnRetiredCyclistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetiredCyclistActionPerformed
+        formDeletedRiders form = new formDeletedRiders();
         showForm(form);
-    }//GEN-LAST:event_btnNewUser1ActionPerformed
+    }//GEN-LAST:event_btnRetiredCyclistActionPerformed
+
+    private void btnNewUser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUser2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNewUser2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,7 +217,8 @@ public class formAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnEPS;
     private javax.swing.JButton btnEPS1;
     private javax.swing.JButton btnNewUser;
-    private javax.swing.JButton btnNewUser1;
+    private javax.swing.JButton btnNewUser2;
+    private javax.swing.JButton btnRetiredCyclist;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

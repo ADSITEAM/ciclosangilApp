@@ -25,7 +25,7 @@ public class modelCiclistas {
     Conexion obj = new Conexion();
     Connection cnx = obj.getConexBD();
 
-    String getId(String doc) {
+    public String getId(String doc) {
         String id = "";
         String query = "select id from ciclistas where n_documento='" + doc + "'";
         try {
@@ -105,8 +105,31 @@ public class modelCiclistas {
         modal.showModal(error, text);
     }
 
-    public void delete(String id) {
-        String query = "update ciclistas set estado=0 where id = '" + id + "'";
+    public void changeState(String id, int State) {
+        String query = "update ciclistas set estado="+State+" where id = '" + id + "'";
+        try {
+            PreparedStatement statement = cnx.prepareStatement(query);
+            statement.executeUpdate();
+            error = false;
+            if (State == 0) {
+                text = "Ciclista retirado correctamente";
+            }
+            else{
+                text = "Ciclista re ingresado correctamente";
+            }
+        } catch (Exception e) {
+             if (State == 0) {
+                text = "Error al reitrar ciclista";
+            }
+            else{
+                text = "Error al re ingresar ciclista";
+            }
+        }
+
+        modal.showModal(error, text);
+    }
+    public void totalDelete(String id){
+        String query = "delete from ciclistas where id = '" + id + "'";
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
             statement.executeUpdate();
@@ -130,9 +153,31 @@ public class modelCiclistas {
             return null;
         }
     }
+    public ResultSet fillTableDeleted() {
+        String query = "select n_documento, nombres, apellidos, fecha_nacimiento from ciclistas where estado=0";
+        try {
+            Statement st = cnx.createStatement();
+            return st.executeQuery(query);
+        } catch (Exception e) {
+            System.out.println("Error en select from delete:");
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 
     public ResultSet selectEdit(String doc) {
         String query = "select * from ciclistas where n_documento='" + doc + "'";
+        try {
+            Statement st = cnx.createStatement();
+            return st.executeQuery(query);
+        } catch (Exception e) {
+            System.out.println("Error en select from delete:");
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    public ResultSet selectListar(String doc){
+        String query = "select ciclistas.*, eps.nombre as epsName, rh.nombre as rhName FROM ((ciclistas INNER JOIN eps ON eps.id = ciclistas.eps) INNER JOIN rh ON rh.id = ciclistas.rh) WHERE estado = 1 AND n_documento = '"+doc+"'";
         try {
             Statement st = cnx.createStatement();
             return st.executeQuery(query);
