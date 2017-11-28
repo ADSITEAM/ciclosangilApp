@@ -17,7 +17,7 @@ import javax.swing.table.*;
  *
  * @author ADMIN
  */
-public class formEdit extends javax.swing.JFrame {
+public class formListar extends javax.swing.JFrame {
 
     //Global Variables
     DefaultTableModel tableModel;
@@ -27,7 +27,7 @@ public class formEdit extends javax.swing.JFrame {
     /**
      * Creates new form formDelete
      */
-    public formEdit() {
+    public formListar() {
         initComponents();
         allPlaceholders();
         txtSearch1.requestFocusInWindow();
@@ -69,14 +69,14 @@ public class formEdit extends javax.swing.JFrame {
         cbxTipo = new javax.swing.JComboBox<>();
         txtApellidos = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        btnUpdate = new javax.swing.JButton();
-        btnRetirar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         btnBack = new javax.swing.JButton();
         cbxEPS = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        txtInscriptionDate = new javax.swing.JTextField();
         txtSearch1 = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -141,7 +141,7 @@ public class formEdit extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Contacto");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 370, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, -1, -1));
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -152,7 +152,7 @@ public class formEdit extends javax.swing.JFrame {
                 txtEmailFocusLost(evt);
             }
         });
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 370, 200, -1));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, 200, -1));
 
         txtColegio.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtColegio.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -163,11 +163,11 @@ public class formEdit extends javax.swing.JFrame {
                 txtColegioFocusLost(evt);
             }
         });
-        jPanel1.add(txtColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 330, 200, -1));
+        jPanel1.add(txtColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 360, 200, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("EPS");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 40, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 480, 40, -1));
 
         txtNumeroDoc.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtNumeroDoc.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -178,15 +178,15 @@ public class formEdit extends javax.swing.JFrame {
                 txtNumeroDocFocusLost(evt);
             }
         });
-        jPanel1.add(txtNumeroDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 290, 200, -1));
+        jPanel1.add(txtNumeroDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 320, 200, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Documeto");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Nombres");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 210, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 170, -1, -1));
 
         txtNombres.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtNombres.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -197,15 +197,15 @@ public class formEdit extends javax.swing.JFrame {
                 txtNombresFocusLost(evt);
             }
         });
-        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 210, 320, -1));
+        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 170, 300, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Apellidos");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Dirección");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 440, -1, -1));
 
         txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -216,7 +216,7 @@ public class formEdit extends javax.swing.JFrame {
                 txtTelefonoFocusLost(evt);
             }
         });
-        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 370, 110, -1));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 400, 110, -1));
 
         txtDireccion.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -227,17 +227,17 @@ public class formEdit extends javax.swing.JFrame {
                 txtDireccionFocusLost(evt);
             }
         });
-        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 410, 320, -1));
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 440, 320, -1));
 
         cbxJornada.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         cbxJornada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Mañana", "Tarde", "Noche" }));
         cbxJornada.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(cbxJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 330, 110, 24));
+        jPanel1.add(cbxJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 360, 110, 24));
 
         cbxTipo.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "T.I.", "C.C.", "C.E." }));
         cbxTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 290, 110, 24));
+        jPanel1.add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 320, 110, 24));
 
         txtApellidos.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtApellidos.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -248,31 +248,11 @@ public class formEdit extends javax.swing.JFrame {
                 txtApellidosFocusLost(evt);
             }
         });
-        jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 250, 320, -1));
+        jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 210, 300, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Estuduios");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 330, -1, -1));
-
-        btnUpdate.setBackground(new java.awt.Color(0, 0, 51));
-        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdate.setText("Actualizar");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 490, 130, -1));
-
-        btnRetirar.setBackground(new java.awt.Color(102, 0, 0));
-        btnRetirar.setForeground(new java.awt.Color(255, 255, 255));
-        btnRetirar.setText("Retirar");
-        btnRetirar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRetirarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 490, 130, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, -1, -1));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 10, 430));
@@ -298,7 +278,22 @@ public class formEdit extends javax.swing.JFrame {
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(979, 70, 120, -1));
 
         cbxEPS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
-        jPanel1.add(cbxEPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 450, 320, -1));
+        jPanel1.add(cbxEPS, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 480, 320, -1));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel14.setText("Fecha Inscripción");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 250, -1, -1));
+
+        txtInscriptionDate.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtInscriptionDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtInscriptionDateFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtInscriptionDateFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtInscriptionDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, 300, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 570));
 
@@ -393,13 +388,13 @@ public class formEdit extends javax.swing.JFrame {
         setData();
     }//GEN-LAST:event_tablaMouseClicked
 
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        update();
-    }//GEN-LAST:event_btnUpdateActionPerformed
+    private void txtInscriptionDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtInscriptionDateFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtInscriptionDateFocusGained
 
-    private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
-        delete();
-    }//GEN-LAST:event_btnRetirarActionPerformed
+    private void txtInscriptionDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtInscriptionDateFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtInscriptionDateFocusLost
 
     /**
      * @param args the command line arguments
@@ -418,21 +413,23 @@ public class formEdit extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new formEdit().setVisible(true);
+                new formListar().setVisible(true);
             }
         });
     }
@@ -591,14 +588,13 @@ public class formEdit extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnRetirar;
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cbxEPS;
     private javax.swing.JComboBox<String> cbxJornada;
     private javax.swing.JComboBox<String> cbxTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -618,6 +614,7 @@ public class formEdit extends javax.swing.JFrame {
     private javax.swing.JTextField txtColegio;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtInscriptionDate;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JTextField txtNumeroDoc;
     private javax.swing.JTextField txtSearch;

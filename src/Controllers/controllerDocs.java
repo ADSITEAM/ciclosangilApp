@@ -154,7 +154,6 @@ public class controllerDocs {
                     }
                 }
             }
-            System.out.println(""+error);
             error = false;
             text = "Documento Creado Correctamente";
             doc.write(new FileOutputStream("docs/ligaDocs/"+names+ ".docx"));

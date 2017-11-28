@@ -22,7 +22,6 @@ public class formAdmin extends javax.swing.JFrame {
     public formAdmin() {
         initComponents();
         showUser();
-        this.disable();
     }
 
     /**
@@ -189,12 +188,7 @@ public class formAdmin extends javax.swing.JFrame {
     void showUser(){
         controllerLogin ctrl = new controllerLogin();
         String user = ctrl.getUser();
-        if (user.equals("")) {
-            formLogin form = new formLogin();
-            showForm(form);
-        } else{
-            lbUser.setText(user);
-        }
+        lbUser.setText(user);
     }
     void showForm(JFrame form) {
         form.setVisible(true);

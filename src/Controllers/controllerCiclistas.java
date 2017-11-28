@@ -21,8 +21,8 @@ public class controllerCiclistas {
     modelCiclistas model = new modelCiclistas();
     modelNormalized modelNormalized = new modelNormalized();
 
-    public void save(Object[] data) {
-        model.save(data);
+    public boolean save(Object[] data) {
+         return model.save(data);
     }
 
     public ResultSet fillTable() {

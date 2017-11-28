@@ -18,20 +18,22 @@ import javax.swing.JOptionPane;
  * @author Aprendiz
  */
 public class modelCiclistas {
+
     formMessage modal = new formMessage();
     boolean error = true;
     String text = "";
     Conexion obj = new Conexion();
     Connection cnx = obj.getConexBD();
-    String getId(String doc){
-        String id ="";
-        String query = "select id from ciclistas where n_documento='"+doc+"'";
+
+    String getId(String doc) {
+        String id = "";
+        String query = "select id from ciclistas where n_documento='" + doc + "'";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 id = rs.getString("id");
-                
+
             }
         } catch (Exception e) {
             System.out.println("Error en getID:");
@@ -39,29 +41,33 @@ public class modelCiclistas {
         }
         return id;
     }
-    public void save(Object[] data){
-        String query = "insert into ciclistas (n_documento, tipo_documento, nombres,apellidos,fecha_nacimiento,lugar_nacimiento,colegio,jornada,rh,eps,direccion,email,telefono,nombre_madre,nombre_padre,modalidad,sexo) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+    public boolean save(Object[] data) {
+        boolean state = false;
+        String query = "insert into ciclistas (n_documento, tipo_documento, nombres,apellidos,fecha_nacimiento,lugar_nacimiento,colegio,jornada,rh,eps,direccion,email,telefono,nombre_madre,nombre_padre,modalidad,sexo,fecha_inscripcion,estado) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
             for (int i = 0; i < data.length; i++) {
-                statement.setString(i+1, data[i].toString());
+                statement.setString(i + 1, data[i].toString());
             }
             int count = statement.executeUpdate();
             error = false;
-            text = "<html><center>Deportista: "+data[2].toString()+" "+data[3].toString()+"<br>inscrito correctamente.</center></html>";
+            text = "<html><center>Deportista: " + data[2].toString() + " " + data[3].toString() + "<br>inscrito correctamente.</center></html>";
             controllerDocs docs = new controllerDocs();
             String doc = data[0].toString();
             docs.generateDoc(getId(doc));
+            state = true;
         } catch (Exception e) {
             System.out.println("Error en save ciclistas:");
             System.out.println(e.getMessage());
-           text = "Error al inscribir el deportista.";
+            text = "Error al inscribir el deportista.";
         }
-        modal.showModal(error,text);
+        modal.showModal(error, text);
+        return state;
     }
 
-    public ResultSet selectDoc(String id){
-        String query = "SELECT ciclistas.*, eps.nombre as nombreEPS, rh.nombre as nombreRH FROM ((ciclistas INNER JOIN eps ON eps.id = ciclistas.eps) INNER JOIN rh ON rh.id = ciclistas.rh) where ciclistas.id = '"+id+"'";
+    public ResultSet selectDoc(String id) {
+        String query = "SELECT ciclistas.*, eps.nombre as nombreEPS, rh.nombre as nombreRH FROM ((ciclistas INNER JOIN eps ON eps.id = ciclistas.eps) INNER JOIN rh ON rh.id = ciclistas.rh) where ciclistas.id = '" + id + "'";
         try {
             Statement st = cnx.createStatement();
             return st.executeQuery(query);
@@ -71,7 +77,8 @@ public class modelCiclistas {
             return null;
         }
     }
-    public void update(Object[] data){
+
+    public void update(Object[] data) {
         String id = data[0].toString();
         String doc = data[1].toString();
         String type = data[2].toString();
@@ -83,7 +90,7 @@ public class modelCiclistas {
         String tel = data[8].toString();
         String dir = data[9].toString();
         String eps = data[10].toString();
-        String query = "update ciclistas set n_documento='"+doc+"',eps='"+eps+"',direccion='"+dir+"',email='"+mail+"',telefono='"+tel+"', jornada='"+jor+"', tipo_documento='"+type+"', nombres='"+nombres+"', apellidos='"+apellidos+"', colegio='"+col+"' where id='"+id+"'";
+        String query = "update ciclistas set n_documento='" + doc + "',eps='" + eps + "',direccion='" + dir + "',email='" + mail + "',telefono='" + tel + "', jornada='" + jor + "', tipo_documento='" + type + "', nombres='" + nombres + "', apellidos='" + apellidos + "', colegio='" + col + "' where id='" + id + "'";
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
             statement.executeUpdate();
@@ -97,8 +104,9 @@ public class modelCiclistas {
         }
         modal.showModal(error, text);
     }
-    public void delete(String id){
-        String query = "delete from ciclistas where id = '"+id+"'";
+
+    public void delete(String id) {
+        String query = "update ciclistas set estado=0 where id = '" + id + "'";
         try {
             PreparedStatement statement = cnx.prepareStatement(query);
             statement.executeUpdate();
@@ -107,11 +115,12 @@ public class modelCiclistas {
         } catch (Exception e) {
             text = "Error al reitrar ciclista";
         }
-        
+
         modal.showModal(error, text);
     }
-    public ResultSet fillTable(){
-        String query = "select n_documento, nombres, apellidos, sexo, fecha_nacimiento from ciclistas";
+
+    public ResultSet fillTable() {
+        String query = "select n_documento, nombres, apellidos, sexo, fecha_nacimiento from ciclistas where estado=1";
         try {
             Statement st = cnx.createStatement();
             return st.executeQuery(query);
@@ -121,9 +130,9 @@ public class modelCiclistas {
             return null;
         }
     }
-    
-    public ResultSet selectEdit(String doc){
-        String query = "select * from ciclistas where n_documento='"+doc+"'";
+
+    public ResultSet selectEdit(String doc) {
+        String query = "select * from ciclistas where n_documento='" + doc + "'";
         try {
             Statement st = cnx.createStatement();
             return st.executeQuery(query);

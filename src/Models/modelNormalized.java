@@ -54,8 +54,7 @@ public class modelNormalized {
         }
     }
     public int getID(String name, String table){
-        int id = 0;
-        System.out.println(name+ " "+table);
+        int id = -1;
         String query ="select id from "+table+" where nombre = '"+name+"'";
         try {
             Statement st = cnx.createStatement();
@@ -64,7 +63,7 @@ public class modelNormalized {
                 id = rs.getInt("id");
             }
         } catch (Exception e) {
-            System.out.println("Error cargar id eps");
+            System.out.println("Error cargar id " + table);
             System.out.println(e.getMessage());
         }
         return id;
