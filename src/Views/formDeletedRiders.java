@@ -8,7 +8,9 @@ package Views;
 import Controllers.controllerCategorias;
 import Controllers.controllerCiclistas;
 import java.awt.Color;
+import java.awt.Image;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -30,6 +32,7 @@ public class formDeletedRiders extends javax.swing.JFrame {
      */
     public formDeletedRiders() {
         initComponents();
+        setIcon();
         showPlaceholder(txtSearch, "Ingrese el nombre o documento del deportista...");
         txtSearch1.requestFocusInWindow();
         createColumns();
@@ -333,6 +336,10 @@ public class formDeletedRiders extends javax.swing.JFrame {
         } else {
             modal.showModal(true, "Por favor seleccione un deportista");
         }
+    }
+    private void setIcon() {
+        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        setIconImage(icon);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

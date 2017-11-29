@@ -9,7 +9,9 @@ import Controllers.controllerCategorias;
 import Controllers.controllerCiclistas;
 import Controllers.controllerInscripciones;
 import java.awt.Color;
+import java.awt.Image;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -31,6 +33,7 @@ public class formInscripcion extends javax.swing.JFrame {
 
     public formInscripcion() {
         initComponents();
+        setIcon();
         createColumns(tablaRacers);
         createColumns(tabla);
         fillTable();
@@ -370,7 +373,10 @@ public class formInscripcion extends javax.swing.JFrame {
             }
         });
     }
-
+    private void setIcon() {
+        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        setIconImage(icon);
+    }
     void createColumns(JTable tabla) {
         tableModel = (DefaultTableModel) tabla.getModel();
         tableModel.addColumn("Nombres");

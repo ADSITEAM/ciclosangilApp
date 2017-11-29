@@ -7,9 +7,11 @@ package Views;
 
 import Controllers.controllerCiclistas;
 import java.awt.Color;
+import java.awt.Image;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
 /**
@@ -25,6 +27,7 @@ public class formInsert extends javax.swing.JFrame {
      */
     public formInsert() {
         initComponents();
+        setIcon();
         setLocationRelativeTo(null);
         allPlaceholders();
         loadCbx();
@@ -519,7 +522,10 @@ public class formInsert extends javax.swing.JFrame {
             }
         });
     }
-
+    private void setIcon() {
+        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        setIconImage(icon);
+    }
     void limpiar() {
         txtApellidos.setText("");
         txtNombres.setText("");

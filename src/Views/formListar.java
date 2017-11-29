@@ -8,7 +8,9 @@ package Views;
 import Controllers.controllerCategorias;
 import Controllers.controllerCiclistas;
 import java.awt.Color;
+import java.awt.Image;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.*;
@@ -30,6 +32,7 @@ public class formListar extends javax.swing.JFrame {
     public formListar() {
         initComponents();
         txtSearch1.requestFocusInWindow();
+        setIcon();
         showPlaceholder(txtSearch, "Ingrese el nombre o documento del deportista...");
         createColumns();
         fillTable();
@@ -415,6 +418,10 @@ public class formListar extends javax.swing.JFrame {
                 new formListar().setVisible(true);
             }
         });
+    }
+    private void setIcon() {
+        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        setIconImage(icon);
     }
     void createColumns() {
         tableModel = (DefaultTableModel) tabla.getModel();

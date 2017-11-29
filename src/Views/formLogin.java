@@ -7,6 +7,8 @@ package Views;
 
 import Controllers.controllerLogin;
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,15 +20,18 @@ import javax.swing.JTextField;
  * @author ADMIN
  */
 public class formLogin extends javax.swing.JFrame {
+
     controllerLogin ctrlLogin = new controllerLogin();
     String placeholderUser = "Nombre de Usuario.";
     String placeholderPass = "Contraseña.";
+
     /**
      * Creates new form NewJFrame
      */
     public formLogin() {
         initComponents();
         setLocationRelativeTo(null);
+        setIcon();
         txtFocus.requestFocusInWindow();
         showPlaceholder(txtUsuario, placeholderUser);
         showPassPlaceholder(txtContraseña, lbPassPlaceholder, placeholderPass);
@@ -168,7 +173,7 @@ public class formLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
+        cancelar();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
@@ -244,7 +249,8 @@ public class formLogin extends javax.swing.JFrame {
             }
         });
     }
-    void validateLogin(){
+
+    void validateLogin() {
         String user = txtUsuario.getText();
         String pass = txtContraseña.getText();
         int validate = ctrlLogin.validarLogin(user, pass);
@@ -253,22 +259,23 @@ public class formLogin extends javax.swing.JFrame {
             if (rol == 1) {
                 formAdmin form = new formAdmin();
                 showForm(form);
-            } else{
+            } else {
                 formMain form = new formMain();
                 showForm(form);
             }
-        } else{
+        } else {
             txtContraseña.setText("");
+            txtContraseña.requestFocusInWindow();
             lbAlert.setText("Usuario y/o contraseña incorrectos.");
         }
     }
-    
+
     void showForm(JFrame form) {
         this.dispose();
         form.setVisible(true);
         form.setLocationRelativeTo(null);
     }
-    
+
     void showPlaceholder(JTextField element, String placeholderText) {
         if (element.getText().equals("")) {
             element.setForeground(Color.decode("#818181"));
@@ -283,12 +290,14 @@ public class formLogin extends javax.swing.JFrame {
             element.setForeground(Color.decode("#000000"));
         }
     }
-    void showPassPlaceholder(JPasswordField el, JLabel lb, String text){
+
+    void showPassPlaceholder(JPasswordField el, JLabel lb, String text) {
         if (el.getText().equals("")) {
             lb.setText(text);
         }
     }
-    void unshowPassPlaceholder(JPasswordField el,JLabel lb){
+
+    void unshowPassPlaceholder(JPasswordField el, JLabel lb) {
         lb.setText("");
     }
 
@@ -310,4 +319,16 @@ public class formLogin extends javax.swing.JFrame {
     private javax.swing.JTextField txtFocus;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        setIconImage(icon);
+    }
+
+    private void cancelar() {
+        txtContraseña.setText("");
+        txtUsuario.setText("");
+        showPassPlaceholder(txtContraseña, lbPassPlaceholder, placeholderPass);
+        showPlaceholder(txtUsuario, placeholderUser);
+    }
 }

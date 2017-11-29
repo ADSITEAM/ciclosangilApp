@@ -7,6 +7,8 @@ package Views;
 
 import Controllers.controllerUsers;
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,6 +30,7 @@ public class formNewUser extends javax.swing.JFrame {
      */
     public formNewUser() {
         initComponents();
+        setIcon();
         txtFocus.requestFocusInWindow();
         showPlaceholder(txtUsuario, placeholderUser);
         showPassPlaceholder(txtContraseña, lbPassPlaceholder, placeholderPass);
@@ -60,6 +63,7 @@ public class formNewUser extends javax.swing.JFrame {
         txtFocus = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -235,6 +239,11 @@ public class formNewUser extends javax.swing.JFrame {
                 new formNewUser().setVisible(true);
             }
         });
+    }
+
+    private void setIcon() {
+        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        setIconImage(icon);
     }
 
     void showForm(JFrame form) {

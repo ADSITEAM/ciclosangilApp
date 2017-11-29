@@ -7,7 +7,9 @@ package Views;
 
 import Controllers.controllerUsers;
 import java.awt.Color;
+import java.awt.Image;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -31,6 +33,7 @@ public class formEditUser extends javax.swing.JFrame {
     public formEditUser() {
         initComponents();
         txtFocus.requestFocusInWindow();
+        setIcon();
         showPlaceholder(txtUsuario, placeholderUser);
         showPassPlaceholder(txtContraseña, lbPassPlaceholder, placeholderPass);
         fillUsers();
@@ -77,6 +80,7 @@ public class formEditUser extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -324,6 +328,10 @@ public class formEditUser extends javax.swing.JFrame {
                 new formEditUser().setVisible(true);
             }
         });
+    }
+    private void setIcon() {
+        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        setIconImage(icon);
     }
     void delete(){
         String user = cbxUsers.getSelectedItem().toString();

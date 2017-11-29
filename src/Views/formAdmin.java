@@ -7,6 +7,8 @@ package Views;
 
 import Controllers.controllerLogin;
 import Models.modelEPS;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -20,6 +22,7 @@ public class formAdmin extends javax.swing.JFrame {
      * Creates new form formAdmin
      */
     public formAdmin() {
+        setIcon();
         initComponents();
         showUser();
     }
@@ -46,6 +49,7 @@ public class formAdmin extends javax.swing.JFrame {
         btnNewUser2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -211,6 +215,10 @@ public class formAdmin extends javax.swing.JFrame {
         form.setVisible(true);
         form.setLocationRelativeTo(null);
         this.dispose();
+    }
+    private void setIcon() {
+        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        setIconImage(icon);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

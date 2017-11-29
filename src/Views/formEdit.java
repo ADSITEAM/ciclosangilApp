@@ -8,7 +8,9 @@ package Views;
 import Controllers.controllerCategorias;
 import Controllers.controllerCiclistas;
 import java.awt.Color;
+import java.awt.Image;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -31,6 +33,7 @@ public class formEdit extends javax.swing.JFrame {
     public formEdit() {
         initComponents();
         allPlaceholders();
+        setIcon();
         txtSearch1.requestFocusInWindow();
         createColumns();
         fillTable();
@@ -437,7 +440,10 @@ public class formEdit extends javax.swing.JFrame {
             }
         });
     }
-
+    private void setIcon() {
+        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        setIconImage(icon);
+    }
     void getEPS() {
         controllerCiclistas ctrl = new controllerCiclistas();
         ctrl.getEps();

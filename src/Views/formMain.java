@@ -6,6 +6,8 @@
 package Views;
 
 import Controllers.controllerLogin;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -21,6 +23,7 @@ public class formMain extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         showUser();
+        setIcon();
         jPanel2.requestFocusInWindow();
     }
 
@@ -190,6 +193,10 @@ public class formMain extends javax.swing.JFrame {
                 new formMain().setVisible(true);
             }
         });
+    }
+    private void setIcon() {
+        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        setIconImage(icon);
     }
     void showUser(){
         controllerLogin ctrl = new controllerLogin();

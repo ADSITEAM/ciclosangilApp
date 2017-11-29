@@ -55,11 +55,6 @@ public class controllerInscripciones {
                             text = text.replace("telDir", raceData[2]);
                             r.setText(text, 0);
                         }
-
-                        if (text != null && text.contains("DiligencedName")) {
-                            text = text.replace("DiligencedName", "Luz Marina Pulido Sandoval");
-                            r.setText(text, 0);
-                        }
                         if (text != null && text.contains("DateSended")) {
                             Date today = new Date();
                             today.setHours(0);
