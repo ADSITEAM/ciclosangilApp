@@ -511,6 +511,7 @@ public class formListar extends javax.swing.JFrame {
                 lbEPS.setText(data.getString("epsName"));
                 lbRH.setText(data.getString("rhName"));
                 lbBornDay.setText(data.getString("fecha_nacimiento").replace("-","/"));
+                lbBornPlace.setText(data.getString("lugar_nacimiento"));
                 lbInscriptionDay.setText(data.getString("fecha_inscripcion").replace("-","/"));
                 lbFather.setText(data.getString("nombre_padre"));
                 lbMother.setText(data.getString("nombre_madre"));

@@ -7,6 +7,8 @@ package Controllers;
 
 import Views.formMessage;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -20,9 +22,11 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
  * @author user
  */
 public class controllerInscripciones {
+
     formMessage modal = new formMessage();
     String txt = "";
     boolean error = true;
+
     public void generarInscripcion(String[] raceData, String[][] racers) {
         try {
             XWPFDocument doc = new XWPFDocument(OPCPackage.open("docs/planilla2.docx"));
@@ -36,28 +40,32 @@ public class controllerInscripciones {
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("delegado")) {
-                            text = text.replace("delegado", raceData[1]);
+                            text = text.replace("delegado", raceData[3]);
                             r.setText(text, 0);
                         }
-                         if (text != null && text.contains("telDel")) {
-                            text = text.replace("telDel", raceData[2]);
+                        if (text != null && text.contains("telDel")) {
+                            text = text.replace("telDel", raceData[4]);
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("DT")) {
-                            text = text.replace("DT", raceData[3]);
+                            text = text.replace("DT", raceData[1]);
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("telDir")) {
-                            text = text.replace("telDir", raceData[4]);
+                            text = text.replace("telDir", raceData[2]);
                             r.setText(text, 0);
                         }
-                       
+
                         if (text != null && text.contains("DiligencedName")) {
-                            text = text.replace("DiligencedName", "Nicolás Mateo Arias");
+                            text = text.replace("DiligencedName", "Luz Marina Pulido Sandoval");
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("DateSended")) {
-                            text = text.replace("DateSended", "16/03/2017");
+                            Date today = new Date();
+                            today.setHours(0);
+                            SimpleDateFormat Fecha = new SimpleDateFormat("dd/MM/yyyy");
+
+                            text = text.replace("DateSended", Fecha.format(today));
                             r.setText(text, 0);
                         }
                     }
@@ -78,7 +86,7 @@ public class controllerInscripciones {
             }
             error = false;
             txt = "Documento creado correctamente.";
-            doc.write(new FileOutputStream("docs/inscripciones/"+raceData[0]+".docx"));
+            doc.write(new FileOutputStream("docs/inscripciones/" + raceData[0] + ".docx"));
         } catch (Exception e) {
             txt = "Error inesperado al crear documento";
             System.out.println("Error al generar documento");

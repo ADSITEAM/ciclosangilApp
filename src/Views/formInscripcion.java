@@ -204,6 +204,7 @@ public class formInscripcion extends javax.swing.JFrame {
         jPanel1.add(txtTelDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 100, 140, 30));
 
         jButton3.setBackground(new java.awt.Color(0, 51, 102));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Generar Inscripción");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,6 +214,7 @@ public class formInscripcion extends javax.swing.JFrame {
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 493, 140, 30));
 
         btnVolver.setBackground(new java.awt.Color(102, 102, 0));
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
         btnVolver.setText("Menú Principal ");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -369,23 +371,6 @@ public class formInscripcion extends javax.swing.JFrame {
         });
     }
 
-    void changueTable(JTable from, JTable to) {
-        int row = from.getSelectedRow();
-        if (row > -1) {
-            Object[] data = new Object[5];
-            for (int i = 0; i < 5; i++) {
-                data[i] = from.getValueAt(row, i);
-            }
-            DefaultTableModel fromModel, toModel;
-            fromModel = (DefaultTableModel) from.getModel();
-            toModel = (DefaultTableModel) to.getModel();
-            fromModel.removeRow(row);
-            toModel.addRow(data);
-        } else {
-            modal.showModal(true, "Seleccione un deportista");
-        }
-    }
-
     void createColumns(JTable tabla) {
         tableModel = (DefaultTableModel) tabla.getModel();
         tableModel.addColumn("Nombres");
@@ -487,11 +472,47 @@ public class formInscripcion extends javax.swing.JFrame {
                 }
                 controllerInscripciones ctrl = new controllerInscripciones();
                 ctrl.generarInscripcion(raceData, racers);
+                limpiar();
             } else {
                 modal.showModal(true, "Debe inscribir almenos un deportista.");
             }
         }
 
+    }
+    void limpiar(){
+        txtCarrera.setText("");
+        txtDT.setText("");
+        txtDelegado.setText("");
+        txtTelDT.setText("");
+        txtTelDelegado.setText("");
+        allPlaceholders();
+        int rows = tablaRacers.getRowCount();
+        DefaultTableModel model = (DefaultTableModel) tablaRacers.getModel();
+        for (int i = rows-1; i >= 0; i--) {
+            model.removeRow(i);
+        }
+        model = (DefaultTableModel) tabla.getModel();
+        rows = tabla.getRowCount();
+        for (int i = rows-1; i >= 0; i--) {
+            model.removeRow(i);
+        }
+        fillTable();
+    }
+    void changueTable(JTable from, JTable to) {
+        int row = from.getSelectedRow();
+        if (row > -1) {
+            Object[] data = new Object[5];
+            for (int i = 0; i < 5; i++) {
+                data[i] = from.getValueAt(row, i);
+            }
+            DefaultTableModel fromModel, toModel;
+            fromModel = (DefaultTableModel) from.getModel();
+            toModel = (DefaultTableModel) to.getModel();
+            fromModel.removeRow(row);
+            toModel.addRow(data);
+        } else {
+            modal.showModal(true, "Seleccione un deportista");
+        }
     }
     void allPlaceholders(){
         showPlaceholder(txtCarrera, "Nombre de la carrera.");

@@ -138,7 +138,8 @@ public class formMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIscripCarrerasActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        this.dispose();
+        formListar form = new formListar();
+        showForm(form);
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed

@@ -18,9 +18,11 @@ import javax.swing.JTextField;
  * @author user
  */
 public class formNewUser extends javax.swing.JFrame {
+
     String placeholderUser = "Nombre de Usuario.";
     String placeholderPass = "Contraseña.";
     formMessage modal = new formMessage();
+
     /**
      * Creates new form formUsers
      */
@@ -176,7 +178,7 @@ public class formNewUser extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContraseñaFocusLost
 
     private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
-        
+
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
@@ -240,12 +242,13 @@ public class formNewUser extends javax.swing.JFrame {
         form.setVisible(true);
         form.setLocationRelativeTo(null);
     }
-    void register(){
+
+    void register() {
         controllerUsers ctrl = new controllerUsers();
         String user = txtUsuario.getText();
         String pass = txtContraseña.getText();
         int rol = cbxRol.getSelectedIndex();
-        Object[] data = {user,pass,rol};
+        Object[] data = {user, pass, rol};
         if (!user.equals(placeholderUser) && !pass.equals("")) {
             boolean state = ctrl.validateUser(user);
             if (state) {
@@ -253,14 +256,17 @@ public class formNewUser extends javax.swing.JFrame {
                 txtUsuario.setText("");
                 txtContraseña.setText("");
                 cbxRol.setSelectedIndex(0);
-            }else{
+                showPlaceholder(txtUsuario, placeholderUser);
+                showPassPlaceholder(txtContraseña, lbPassPlaceholder, placeholderPass);
+            } else {
                 modal.showModal(true, "El usuario ya está registrado");
             }
-        }else{
+        } else {
             modal.showModal(true, "Debe llenar ambos campos");
         }
-        
+
     }
+
     void showPlaceholder(JTextField element, String placeholderText) {
         if (element.getText().equals("")) {
             element.setForeground(Color.decode("#818181"));
@@ -275,15 +281,17 @@ public class formNewUser extends javax.swing.JFrame {
             element.setForeground(Color.decode("#000000"));
         }
     }
-    void showPassPlaceholder(JPasswordField el, JLabel lb, String text){
+
+    void showPassPlaceholder(JPasswordField el, JLabel lb, String text) {
         if (el.getText().equals("")) {
             lb.setText(text);
         }
     }
-    void unshowPassPlaceholder(JPasswordField el,JLabel lb){
+
+    void unshowPassPlaceholder(JPasswordField el, JLabel lb) {
         lb.setText("");
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCrear;

@@ -184,7 +184,7 @@ public class formDeletedRiders extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchFocusGained
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        formMain form = new formMain();
+        formAdmin form = new formAdmin();
         this.dispose();
         form.setVisible(true);
         form.setLocationRelativeTo(null);

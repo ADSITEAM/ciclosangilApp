@@ -164,7 +164,8 @@ public class formAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRetiredCyclistActionPerformed
 
     private void btnNewUser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUser2ActionPerformed
-        // TODO add your handling code here:
+        formEditUser form = new formEditUser();
+        showForm(form);
     }//GEN-LAST:event_btnNewUser2ActionPerformed
 
     /**
