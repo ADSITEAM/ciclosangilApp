@@ -7,11 +7,9 @@ package Views;
 
 import Controllers.controllerLogin;
 import java.awt.Color;
-import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -321,8 +319,7 @@ public class formLogin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {
-        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
-        setIconImage(icon);
+        setIconImage(new ImageIcon(getClass().getResource("icono.png")).getImage());
     }
 
     private void cancelar() {

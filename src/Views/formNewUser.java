@@ -11,7 +11,6 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -242,7 +241,7 @@ public class formNewUser extends javax.swing.JFrame {
     }
 
     private void setIcon() {
-        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        Image icon = new ImageIcon(getClass().getResource("icono.png")).getImage();
         setIconImage(icon);
     }
 

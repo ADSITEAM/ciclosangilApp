@@ -12,7 +12,6 @@ import java.awt.Color;
 import java.awt.Image;
 import java.sql.ResultSet;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -206,7 +205,7 @@ public class formInscripcion extends javax.swing.JFrame {
         });
         jPanel1.add(txtTelDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 100, 140, 30));
 
-        jButton3.setBackground(new java.awt.Color(0, 51, 102));
+        jButton3.setBackground(new java.awt.Color(0, 0, 51));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Generar Inscripción");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -374,7 +373,7 @@ public class formInscripcion extends javax.swing.JFrame {
         });
     }
     private void setIcon() {
-        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        Image icon = new ImageIcon(getClass().getResource("icono.png")).getImage();
         setIconImage(icon);
     }
     void createColumns(JTable tabla) {

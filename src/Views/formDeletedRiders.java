@@ -338,7 +338,7 @@ public class formDeletedRiders extends javax.swing.JFrame {
         }
     }
     private void setIcon() {
-        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        Image icon = new ImageIcon(getClass().getResource("icono.png")).getImage();
         setIconImage(icon);
     }
 

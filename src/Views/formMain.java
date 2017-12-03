@@ -61,7 +61,7 @@ public class formMain extends javax.swing.JFrame {
                 btnIscripCarrerasActionPerformed(evt);
             }
         });
-        jPanel2.add(btnIscripCarreras, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 240, 30));
+        jPanel2.add(btnIscripCarreras, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 240, 30));
 
         btnEliminar.setBackground(new java.awt.Color(0, 0, 51));
         btnEliminar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
@@ -72,7 +72,7 @@ public class formMain extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 240, 30));
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 240, 30));
 
         btnListar.setBackground(new java.awt.Color(0, 0, 51));
         btnListar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
@@ -83,7 +83,7 @@ public class formMain extends javax.swing.JFrame {
                 btnListarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 240, 30));
+        jPanel2.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 240, 30));
 
         btnInsertar.setBackground(new java.awt.Color(0, 0, 51));
         btnInsertar.setFont(new java.awt.Font("Myriad Pro", 0, 14)); // NOI18N
@@ -94,7 +94,7 @@ public class formMain extends javax.swing.JFrame {
                 btnInsertarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 240, 30));
+        jPanel2.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 240, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 25)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logox100px.png"))); // NOI18N
@@ -195,7 +195,7 @@ public class formMain extends javax.swing.JFrame {
         });
     }
     private void setIcon() {
-        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        Image icon = new ImageIcon(getClass().getResource("icono.png")).getImage();
         setIconImage(icon);
     }
     void showUser(){

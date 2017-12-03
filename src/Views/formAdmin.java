@@ -217,7 +217,7 @@ public class formAdmin extends javax.swing.JFrame {
         this.dispose();
     }
     private void setIcon() {
-        Image icon = new ImageIcon(getClass().getResource("../Images/logox100px.png")).getImage();
+        Image icon = new ImageIcon(getClass().getResource("icono.png")).getImage();
         setIconImage(icon);
     }
 
